@@ -11,8 +11,11 @@ import {
   Text,
   NavigatorIOS,
   ScrollView,
+  TabBarIOS,
   View
 } from 'react-native';
+
+import TabApp from './app/components/tabapp';
 
 import Main from './app/components/main';
 import Overview from './app/components/overview';
@@ -20,12 +23,7 @@ import Overview from './app/components/overview';
 export default class App extends React.Component {
   render() {
     return (
-      <NavigatorIOS
-        style={styles.mainContainer}
-        initialRoute={{
-          title: 'Main',
-          component: Main,
-        }} />
+      <TabApp />
     );
   }
 }
@@ -33,7 +31,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    maxHeight: 700,
     backgroundColor: '#111111',
   },
 });
