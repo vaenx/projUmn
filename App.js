@@ -33,6 +33,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    maxHeight: 700,
     backgroundColor: '#111111',
   },
 });
