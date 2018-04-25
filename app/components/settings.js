@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View } from 'react-native';
 
-export default class Overview extends React.Component {
+export default class Settings extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
-        <Text style={styles.content}>Testing the Router! This is the Overview screen ;) </Text>
+        <Text style={styles.content}>Settings baby! This is the Settings screen ;) </Text>
         </ScrollView>
       </View>
     );
@@ -16,7 +16,7 @@ export default class Overview extends React.Component {
 const styles = StyleSheet.create({
   content: {
     marginTop: 90+80,
-    marginHorizontal: 50,
+    marginHorizontal: 20,
   },
   container: {
     flex: 1,

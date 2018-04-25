@@ -17,9 +17,6 @@ import {
 
 import TabApp from './app/components/tabapp';
 
-import Main from './app/components/main';
-import Overview from './app/components/overview';
-
 export default class App extends React.Component {
   render() {
     return (
