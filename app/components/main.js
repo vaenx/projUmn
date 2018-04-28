@@ -13,29 +13,34 @@ export default class Main extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container}>
-          <Text style={styles.textTitle}>Set your profile{"\n"}and start using Umn!</Text>
-          <Text style={styles.textBody}>Most digital services feed on people’s attention and are therefore designed to have you spend more time there. From endless scrolling to addictive pull-down-to-refresh features, digital businesses use powerful persuasive design techniques to keep us hooked to our devices.{"\n"}{"\n"}Use Umn to track your online behavior and get control back.</Text>
-        </ScrollView>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.handleSetProfile.bind(this)}
-          underlayColor='#023543'>
-          <Text style={styles.buttonText}>SET PROFILE</Text>
-        </TouchableHighlight>
-      </View>
+      <ImageBackground source={{uri: 'bgLightBlue'}} style={styles.bgImage}>
+        <View style={styles.container}>
+          <ScrollView style={styles.container}>
+            <Text style={styles.textTitle}>Set your profile{"\n"}and start using Umn!</Text>
+            <Text style={styles.textBody}>Most digital services feed on people’s attention and are therefore designed to have you spend more time there. From endless scrolling to addictive pull-down-to-refresh features, digital businesses use powerful persuasive design techniques to keep us hooked to our devices.{"\n"}{"\n"}Use Umn to track your online behavior and get control back.</Text>
+          </ScrollView>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.handleSetProfile.bind(this)}
+            underlayColor='#023543'>
+            <Text style={styles.buttonText}>SET PROFILE</Text>
+          </TouchableHighlight>
+        </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
   textTitle: {
-    fontSize: 20,
-    lineHeight: 26,
+    marginHorizontal: "5%",
+    fontSize: 22,
+    lineHeight: 28,
+    fontWeight:'bold'
   },
   textBody: {
     marginTop: "12%",
+    marginHorizontal: "5%",
     fontSize: 16,
     lineHeight: 26,
   },
@@ -44,6 +49,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     margin: "6%",
     fontSize: 16,
+    fontWeight: "700"
   },
   button: {
     width: 250,
@@ -60,9 +66,12 @@ const styles = StyleSheet.create({
     marginTop: "12%",
     marginHorizontal: "7%",
     borderRadius: 10,
-    shadowColor: 'black',
-    shadowOffset: { height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    shadowColor: '#355C69',
+    shadowOffset: { height: 7 },
+    shadowOpacity: 0.7,
+    shadowRadius: 24,
   },
+  bgImage: {
+    flex: 1,
+  }
 });

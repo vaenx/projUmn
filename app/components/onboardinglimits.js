@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground } from 'react-native';
 import Overview from './overview';
 
 export default class OnboardingLimits extends React.Component {
@@ -13,29 +13,34 @@ export default class OnboardingLimits extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container}>
-          <Text style={styles.textTitle}>Set time limits</Text>
-          <Text style={styles.textBody}>insert time limit bars</Text>
-        </ScrollView>
-        <TouchableHighlight
-          style={styles.buttonContinueSmall}
-          onPress={this.handleToOverview.bind(this)}
-          underlayColor='#023543'>
-          <Text style={styles.buttonText}>FINISH</Text>
-        </TouchableHighlight>
-      </View>
+      <ImageBackground source={{uri: 'bgLightBlueAlt'}} style={styles.bgImage}>
+        <View style={styles.container}>
+          <ScrollView style={styles.container}>
+            <Text style={styles.textTitle}>Set time limits</Text>
+            <Text style={styles.textBody}>insert time limit bars</Text>
+          </ScrollView>
+          <TouchableHighlight
+            style={styles.buttonContinueSmall}
+            onPress={this.handleToOverview.bind(this)}
+            underlayColor='#023543'>
+            <Text style={styles.buttonText}>FINISH</Text>
+          </TouchableHighlight>
+        </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
   textTitle: {
-    fontSize: 20,
-    lineHeight: 26,
+    marginHorizontal: "5%",
+    fontSize: 22,
+    lineHeight: 28,
+    fontWeight:'bold'
   },
   textBody: {
     marginTop: "12%",
+    marginHorizontal: "5%",
     fontSize: 16,
     lineHeight: 26,
   },
@@ -44,6 +49,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     margin: "8%",
     fontSize: 14,
+    fontWeight: "700"
   },
   buttonContinueSmall: {
     width: 140,
@@ -61,9 +67,12 @@ const styles = StyleSheet.create({
     marginTop: "12%",
     marginHorizontal: "7%",
     borderRadius: 10,
-    shadowColor: 'black',
-    shadowOffset: { height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    shadowColor: '#355C69',
+    shadowOffset: { height: 7 },
+    shadowOpacity: 0.7,
+    shadowRadius: 24,
   },
+  bgImage: {
+    flex: 1
+  }
 });
