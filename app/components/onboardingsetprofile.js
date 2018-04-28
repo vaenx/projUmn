@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput } from 'react-native';
 import OnboardingGoals from './onboardinggoals';
 import Main from './main';
 
 export default class OnboardingSetProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      birthday:'',
+      isLoading: false,
+      error: false
+    }
+  }
+  handleChange (event) {
+    this.setState({
+      birthday: event.nativeEvent.text,
+      gender: event.nativeEvent.text
+    });
   }
   handleOnboardingGoals() {
     this.props.navigator.push({
       component: OnboardingGoals,
       navigationBarHidden: true,
     })
+    this.setState({
+      isLoading: true,
+    });
+    console.log('SUBMIT', this.state.birthday);
   }
   handleBackToMain() {
     this.props.navigator.pop({
@@ -25,6 +40,16 @@ export default class OnboardingSetProfile extends React.Component {
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set your profile</Text>
+            <Text style={styles.textBody}>Birthday (DD/MM/YYYY)</Text>
+              <TextInput
+                style={styles.inputField}
+                value={this.state.birthday}
+                onChange={this.handleChange.bind(this)} />
+            <Text style={styles.textBody}>Gender (Male/Female)</Text>
+              <TextInput
+                style={styles.inputField}
+                value={this.state.gender}
+                onChange={this.handleChange.bind(this)} />
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight
@@ -59,6 +84,17 @@ const styles = StyleSheet.create({
     marginHorizontal: "10%",
     fontSize: 16,
     lineHeight: 26,
+  },
+  inputField: {
+    marginTop: 10,
+    marginHorizontal: "10%",
+    borderBottomColor: '#011B22',
+    borderRightColor: 'white',
+    borderLeftColor: 'white',
+    borderTopColor: 'white',
+    borderWidth: 1,
+    height: 30,
+    fontSize: 16,
   },
   buttonText: {
     color: "white",
