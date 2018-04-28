@@ -19,10 +19,10 @@ export default class OnboardingSetProfile extends React.Component {
           // textinput birthday and gender
         </ScrollView>
         <TouchableHighlight
-          style={styles.buttonContinueBig}
+          style={styles.buttonContinueSmall}
           onPress={this.handleOnboardingGoals.bind(this)}
           underlayColor='#023543'>
-          <Text style={styles.buttonText}>Continue</Text>
+          <Text style={styles.buttonText}>CONTINUE</Text>
         </TouchableHighlight>
       </View>
     );
@@ -41,8 +41,17 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+    alignSelf: "center",
+    margin: "8%",
+    fontSize: 14,
   },
-  buttonContinueBig: {
+  buttonContinueSmall: {
+    width: 140,
+    height: 40,
+    borderRadius: 25,
+    marginBottom: "-22%",
+    marginRight: "10%",
+    alignSelf: "flex-end",
     backgroundColor: '#011B22',
   },
   container: {

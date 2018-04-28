@@ -18,8 +18,8 @@ export default class TabApp extends React.Component {
       <TabBarIOS barTintColor="white" tintColor="#0187B3" clipToBounds="true" style={styles.tabbar}>
         <TabBarIOS.Item
           systemIcon="featured"
-          selected={this.state.selectedTab === 'tabOne'}
-          onPress={() => this.setTab('tabOne')}>
+          selected={this.state.selectedTab === 'Overview'}
+          onPress={() => this.setTab('Overview')}>
           <View>
             <Text style={styles.content}><Overview /></Text>
           </View>

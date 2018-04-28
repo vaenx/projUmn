@@ -5,13 +5,11 @@ import TabApp from './tabapp';
 export default class Overview extends React.Component {
   render() {
     return (
-      <TabApp>
         <View style={styles.container}>
           <ScrollView style={styles.container}>
           <Text style={styles.content}>Testing the Router! This is the Overview screen! </Text>
           </ScrollView>
         </View>
-      </TabApp>
     );
   }
 }

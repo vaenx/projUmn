@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS } from 'react-native';
-import OnboardingProfileScreen from './onboardingsetprofile';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground } from 'react-native';
+import OnboardingSetProfile from './onboardingsetprofile';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ export default class Main extends React.Component {
   }
   handleSetProfile() {
     this.props.navigator.push({
-      component: OnboardingProfileScreen,
+      component: OnboardingSetProfile,
     })
   }
   render() {
@@ -22,7 +22,7 @@ export default class Main extends React.Component {
           style={styles.button}
           onPress={this.handleSetProfile.bind(this)}
           underlayColor='#023543'>
-          <Text style={styles.buttonText}>Set Profile</Text>
+          <Text style={styles.buttonText}>SET PROFILE</Text>
         </TouchableHighlight>
       </View>
     );
@@ -41,8 +41,16 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+    alignSelf: "center",
+    margin: "6%",
+    fontSize: 16,
   },
   button: {
+    width: 250,
+    height: 50,
+    borderRadius: 25,
+    marginBottom: "-20%",
+    alignSelf: "center",
     backgroundColor: '#011B22',
   },
   container: {
