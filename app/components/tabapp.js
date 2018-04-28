@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View } from 'react-native';
-import Main from './main';
+import Overview from './overview';
 import Goals from './goals';
 import Limits from './limits';
 import Settings from './settings';
@@ -8,20 +8,20 @@ import Settings from './settings';
 export default class TabApp extends React.Component {
   constructor() {
     super();
-    this.state = {selectedTab: 'Main'}
+    this.state = {selectedTab: 'Overview'}
   }
   setTab(tabId) {
     this.setState({selectedTab: tabId})
   }
   render() {
     return (
-      <TabBarIOS barTintColor="white" tintColor="#0187B3">
+      <TabBarIOS barTintColor="white" tintColor="#0187B3" clipToBounds="true" style={styles.tabbar}>
         <TabBarIOS.Item
           systemIcon="featured"
-          selected={this.state.selectedTab === 'Main'}
-          onPress={() => this.setTab('Main')}>
+          selected={this.state.selectedTab === 'tabOne'}
+          onPress={() => this.setTab('tabOne')}>
           <View>
-            <Text style={styles.content}><Main /></Text>
+            <Text style={styles.content}><Overview /></Text>
           </View>
         </TabBarIOS.Item>
         <TabBarIOS.Item
@@ -55,9 +55,12 @@ export default class TabApp extends React.Component {
 
   const styles = StyleSheet.create({
     content: {
-      marginTop: 50,
+      marginTop: "12%",
       height: 667,
-      marginHorizontal: 20,
+      marginHorizontal: "5%",
     },
+    tabbar: {
+      borderWidth: 0.0
+    }
   }
 )

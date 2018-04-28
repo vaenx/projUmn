@@ -6,7 +6,7 @@ export default class Goals extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
-        <Text style={styles.content}>OIIIIIII oi oi! This is the Goals screen ;) </Text>
+        <Text style={styles.content}>Testing the Router! This is the Goals screen!</Text>
         </ScrollView>
       </View>
     );

@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS } from 'react-native';
-import OnboardingProfileScreen from './onboardingsetprofile';
+import Overview from './overview';
 
-export default class Main extends React.Component {
+export default class OnboardingLimits extends React.Component {
   constructor(props) {
     super(props);
   }
-  handleSetProfile() {
+  handleToOverview() {
     this.props.navigator.push({
-      component: OnboardingProfileScreen,
+      component: Overview,
     })
   }
   render() {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
-          <Text style={styles.textTitle}>Set your profile{"\n"}and start using Umn!</Text>
-          <Text style={styles.textBody}>Most digital services feed on people’s attention and are therefore designed to have you spend more time there. From endless scrolling to addictive pull-down-to-refresh features, digital businesses use powerful persuasive design techniques to keep us hooked to our devices.{"\n"}{"\n"}Use Umn to track your online behavior and get control back.</Text>
+          <Text style={styles.textTitle}>Set time limits</Text>
+          <Text style={styles.textBody}>insert time limit bars</Text>
         </ScrollView>
         <TouchableHighlight
-          style={styles.button}
-          onPress={this.handleSetProfile.bind(this)}
+          style={styles.buttonContinueSmall}
+          onPress={this.handleToOverview.bind(this)}
           underlayColor='#023543'>
-          <Text style={styles.buttonText}>Set Profile</Text>
+          <Text style={styles.buttonText}>Finish</Text>
         </TouchableHighlight>
       </View>
     );
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
   },
-  button: {
+  buttonContinueSmall: {
     backgroundColor: '#011B22',
   },
   container: {

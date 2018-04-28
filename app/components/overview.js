@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View } from 'react-native';
+import TabApp from './tabapp';
 
-export default class Settings extends React.Component {
+export default class Overview extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container}>
-        <Text style={styles.content}>Testing the Router! This is the Settings screen! </Text>
-        </ScrollView>
-      </View>
+      <TabApp>
+        <View style={styles.container}>
+          <ScrollView style={styles.container}>
+          <Text style={styles.content}>Testing the Router! This is the Overview screen! </Text>
+          </ScrollView>
+        </View>
+      </TabApp>
     );
   }
 }
@@ -30,4 +33,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
+  tabbar: {
+
+  }
 });

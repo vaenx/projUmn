@@ -16,11 +16,29 @@ import {
 } from 'react-native';
 
 import TabApp from './app/components/tabapp';
+import Main from './app/components/main';
+import OnboardingSetProfile from './app/components/onboardingsetprofile';
 
-export default class App extends React.Component {
+export class App extends React.Component {
   render() {
     return (
       <TabApp />
+    );
+  }
+}
+
+export default class AppNavigator extends React.Component {
+  render() {
+    return (
+      <NavigatorIOS
+        initialRoute={{
+          title: 'Set Profile',
+          navigationBarHidden: true,
+          translucent: true,
+          shadowHidden: true,
+          component: Main
+        }}
+        style={styles.mainContainer}/>
     );
   }
 }
