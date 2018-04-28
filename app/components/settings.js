@@ -5,7 +5,7 @@ export default class Settings extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container}>
+        <ScrollView>
         <Text style={styles.content}>Testing the Router! This is the Settings screen! </Text>
         </ScrollView>
       </View>

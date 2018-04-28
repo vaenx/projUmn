@@ -9,13 +9,14 @@ export default class Main extends React.Component {
   handleSetProfile() {
     this.props.navigator.push({
       component: OnboardingSetProfile,
-    })
+      navigationBarHidden: true,
+    });
   }
   render() {
     return (
       <ImageBackground source={{uri: 'bgLightBlue'}} style={styles.bgImage}>
         <View style={styles.container}>
-          <ScrollView style={styles.container}>
+          <ScrollView>
             <Text style={styles.textTitle}>Set your profile{"\n"}and start using Umn!</Text>
             <Text style={styles.textBody}>Most digital services feed on people’s attention and are therefore designed to have you spend more time there. From endless scrolling to addictive pull-down-to-refresh features, digital businesses use powerful persuasive design techniques to keep us hooked to our devices.{"\n"}{"\n"}Use Umn to track your online behavior and get control back.</Text>
           </ScrollView>
@@ -33,14 +34,15 @@ export default class Main extends React.Component {
 
 const styles = StyleSheet.create({
   textTitle: {
-    marginHorizontal: "5%",
+    marginTop: "5%",
+    marginHorizontal: "10%",
     fontSize: 22,
     lineHeight: 28,
     fontWeight:'bold'
   },
   textBody: {
     marginTop: "12%",
-    marginHorizontal: "5%",
+    marginHorizontal: "10%",
     fontSize: 16,
     lineHeight: 26,
   },
