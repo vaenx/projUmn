@@ -12,9 +12,13 @@ export default class OnboardingSetProfile extends React.Component {
       error: false
     }
   }
-  handleChange (event) {
+  handleChangeBirthday (event) {
     this.setState({
-      birthday: event.nativeEvent.text,
+      birthday: event.nativeEvent.text
+    });
+  }
+  handleChangeGender (event) {
+    this.setState({
       gender: event.nativeEvent.text
     });
   }
@@ -44,12 +48,12 @@ export default class OnboardingSetProfile extends React.Component {
               <TextInput
                 style={styles.inputField}
                 value={this.state.birthday}
-                onChange={this.handleChange.bind(this)} />
+                onChange={this.handleChangeBirthday.bind(this)} />
             <Text style={styles.textBody}>Gender (Male/Female)</Text>
               <TextInput
                 style={styles.inputField}
                 value={this.state.gender}
-                onChange={this.handleChange.bind(this)} />
+                onChange={this.handleChangeGender.bind(this)} />
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight
