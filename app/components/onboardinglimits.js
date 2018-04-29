@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, Slider } from 'react-native';
 import Overview from './overview';
 import OnboardingGoals from './onboardinggoals';
 
 export default class OnboardingLimits extends React.Component {
   constructor(props) {
     super(props);
+    this.state= {
+      maxHours: 8,
+      maxUnlocks: 300,
+    }
+    this.setState = this.setState.bind(this);
+  }
+  onValueChangeTime(valueTime) {
+    this.props.value({
+      valueTime: '',
+    })
+  }
+  onValueChangeUnlocks(valueUnlocks) {
+    this.props.value({
+      valueUnlocks: '',
+    })
   }
   handleToOverview() {
     this.props.navigator.push({
@@ -24,7 +39,22 @@ export default class OnboardingLimits extends React.Component {
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set time limits</Text>
-              <Text style={styles.textSlider}>time on screen</Text>
+            <Text style={styles.textSlider}>Time on screen</Text>
+            <Text style={styles.textDailyLimit}>Daily limit: {this.state.onValueChangeTime}</Text>
+            <Slider
+              style={styles.timeOnScreenSlider}
+              maximumValue={this.state.maxHours}
+              onValueChange={this.state.onValueChangeTime}
+              step={1} />
+            <Text style={styles.textSliderLabel}>Recommended: 3h</Text>
+            <Text style={styles.textSlider}>Phone Unlocks</Text>
+            <Text style={styles.textDailyLimit}>Daily limit: {this.state.onValueChangeUnlocks}</Text>
+            <Slider
+              style={styles.timeOnScreenSlider}
+              maximumValue={this.state.maxUnlocks}
+              thumbTintColor='#023543'
+              step={10} />
+            <Text style={styles.textSliderLabel}>Recommended: 90 unlocks</Text>
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight
@@ -64,6 +94,24 @@ const styles = StyleSheet.create({
     marginTop: "12%",
     marginHorizontal: "10%",
     fontSize: 18,
+  },
+  textSliderLabel: {
+    marginTop: "3%",
+    marginHorizontal: "10%",
+    color: '#797979',
+    fontSize: 14
+  },
+  textDailyLimit: {
+    marginTop: "5%",
+    marginRight: "10%",
+    color: '#011B22',
+    fontSize: 14,
+    alignSelf: "flex-end"
+  },
+  timeOnScreenSlider: {
+    width: "80%",
+    marginHorizontal: "10%",
+    marginTop: "10%",
   },
   buttonText: {
     color: "white",
