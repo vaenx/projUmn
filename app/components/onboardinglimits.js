@@ -24,7 +24,7 @@ export default class OnboardingLimits extends React.Component {
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set time limits</Text>
-            <Text style={styles.textBody}>insert time limit bars</Text>
+              <Text style={styles.textSlider}>time on screen</Text>
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight
@@ -59,6 +59,11 @@ const styles = StyleSheet.create({
     marginHorizontal: "10%",
     fontSize: 16,
     lineHeight: 26,
+  },
+  textSlider: {
+    marginTop: "12%",
+    marginHorizontal: "10%",
+    fontSize: 18,
   },
   buttonText: {
     color: "white",

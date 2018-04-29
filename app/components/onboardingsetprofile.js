@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker } from 'react-native';
 import OnboardingGoals from './onboardinggoals';
 import Main from './main';
 
 export default class OnboardingSetProfile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      birthday:'',
-      isLoading: false,
-      error: false
-    }
+    this.state={
+      chosenDate: new Date(),
+    };
+    this.setDate = this.setDate.bind(this);
+  }
+  setDate(newDate) {
+    this.setState({
+      chosenDate: newDate
+    })
   }
   handleChangeBirthday (event) {
     this.setState({
@@ -27,10 +31,6 @@ export default class OnboardingSetProfile extends React.Component {
       component: OnboardingGoals,
       navigationBarHidden: true,
     })
-    this.setState({
-      isLoading: true,
-    });
-    console.log('SUBMIT', this.state.birthday);
   }
   handleBackToMain() {
     this.props.navigator.pop({
@@ -45,6 +45,10 @@ export default class OnboardingSetProfile extends React.Component {
           <ScrollView>
             <Text style={styles.textTitle}>Set your profile</Text>
             <Text style={styles.textBody}>Birthday (DD/MM/YYYY)</Text>
+              <DatePickerIOS
+                date={this.state.chosenDate}
+                onDateChange={this.setDate}
+                mode="date"/>
               <TextInput
                 style={styles.inputField}
                 value={this.state.birthday}
