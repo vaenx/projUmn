@@ -63,7 +63,7 @@ export default class OnboardingSetProfile extends React.Component {
           <TouchableHighlight
             style={styles.buttonBack}
             onPress={this.handleBackToMain.bind(this)}
-            underlayColor='#023543'>
+            underlayColor='white'>
             <Text style={styles.buttonTextNegative}>BACK</Text>
           </TouchableHighlight>
           <TouchableHighlight

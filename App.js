@@ -17,7 +17,6 @@ import {
 
 import TabApp from './app/components/tabapp';
 import Main from './app/components/main';
-import OnboardingSetProfile from './app/components/onboardingsetprofile';
 
 export class App extends React.Component {
   render() {
@@ -36,7 +35,7 @@ export default class AppNavigator extends React.Component {
           navigationBarHidden: true,
           translucent: true,
           shadowHidden: true,
-          component: Main
+          component: TabApp
         }}
         style={styles.mainContainer}/>
     );
@@ -46,6 +45,5 @@ export default class AppNavigator extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: '#111111',
   },
 });

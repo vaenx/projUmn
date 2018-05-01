@@ -60,7 +60,7 @@ export default class OnboardingLimits extends React.Component {
           <TouchableHighlight
             style={styles.buttonBack}
             onPress={this.handleBackToGoals.bind(this)}
-            underlayColor='#023543'>
+            underlayColor='white'>
             <Text style={styles.buttonTextNegative}>BACK</Text>
           </TouchableHighlight>
           <TouchableHighlight
