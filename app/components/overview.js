@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View, Image } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, View, ImageBackground } from 'react-native';
 import TabApp from './tabapp';
 
 export default class Overview extends React.Component {
@@ -8,14 +8,13 @@ export default class Overview extends React.Component {
       <View style={styles.container}>
         <Text style={styles.textNeutral}>You have [counter] hours left to live.</Text>
         <View style={styles.mainContainer}>
-          <ScrollView>
-            <Text style={styles.counterStyle}>[time counter]</Text>
-            <Text style={styles.textBody}>time on screen</Text>
-            <Image />
-            <View style={styles.underLine}/>
-            <Text style={styles.textTitleH2}>[counter] unlocks today</Text>
-            <Text style={styles.textBody}>You have reached [%] of your time limit for today.</Text>
-          </ScrollView>
+          <Text style={styles.counterStyle}>[time counter]</Text>
+          <Text style={styles.textBody}>time on screen</Text>
+          <ImageBackground source={{uri: 'overviewGraph'}} style={styles.bgImage}>
+            <Text></Text>
+          </ImageBackground>
+          <Text style={styles.textTitleH2}>[counter] unlocks today</Text>
+          <Text style={styles.textBody}>You have reached [%] of your time limit for today.</Text>
         </View>
       </View>
     );
@@ -52,6 +51,7 @@ const styles = StyleSheet.create({
     marginHorizontal: "10%",
     fontSize: 50,
     fontWeight: "bold",
+    marginTop: "12%",
   },
   container: {
     flex: 1,
@@ -79,5 +79,12 @@ const styles = StyleSheet.create({
     borderLeftColor: "white",
     borderRightColor: "white",
     borderRadius: 3,
+  },
+  bgImage: {
+    marginLeft: "10%",
+    width: "90%",
+    height: 165,
+    alignSelf: "flex-end",
+    marginVertical: "20%",
   },
 });
