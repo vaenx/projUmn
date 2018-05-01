@@ -40,7 +40,7 @@ export default class OnboardingLimits extends React.Component {
           <ScrollView>
             <Text style={styles.textTitle}>Set time limits</Text>
             <Text style={styles.textSlider}>Time on screen</Text>
-            <Text style={styles.textDailyLimit}>Daily limit: {this.state.onValueChangeTime}</Text>
+            <Text style={styles.textDailyLimit}>Your daily limit: {this.state.onValueChangeTime}</Text>
             <Slider
               style={styles.timeOnScreenSlider}
               maximumValue={this.state.maxHours}
@@ -48,7 +48,7 @@ export default class OnboardingLimits extends React.Component {
               step={1} />
             <Text style={styles.textSliderLabel}>Recommended: 3h</Text>
             <Text style={styles.textSlider}>Phone Unlocks</Text>
-            <Text style={styles.textDailyLimit}>Daily limit: {this.state.onValueChangeUnlocks}</Text>
+            <Text style={styles.textDailyLimit}>Your daily limit: {this.state.onValueChangeUnlocks}</Text>
             <Slider
               style={styles.timeOnScreenSlider}
               maximumValue={this.state.maxUnlocks}
