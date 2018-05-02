@@ -16,6 +16,7 @@ export default class Overview extends React.Component {
           <Text style={styles.textTitleH2}>[counter] unlocks today</Text>
           <Text style={styles.textBody}>You have reached [%] of your time limit for today.</Text>
         </View>
+        <TabBarIOS></TabBarIOS>
       </View>
     );
   }
