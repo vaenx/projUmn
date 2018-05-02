@@ -22,35 +22,31 @@ export default class TabApp extends React.Component {
         style={styles.tabbar}>
         <TabBarIOS.Item
           icon={{uri: 'overviewIcon'}}
-          style={styles.tabBarIcon}
           title="Overview"
           selected={this.state.selectedTab === 'Overview'}
           onPress={() => this.setTab('Overview')}>
-          <Text><Overview /></Text>
+          <Overview />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: 'goalsIcon'}}
-          style={styles.tabBarIcon}
           title="Goals"
           selected={this.state.selectedTab === 'Goals'}
           onPress={() => this.setTab('Goals')}>
-          <Text><Goals /></Text>
+          <Goals />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: 'limitsIcon'}}
-          style={styles.tabBarIcon}
           title="Limits"
           selected={this.state.selectedTab === 'Limits'}
           onPress={() => this.setTab('Limits')}>
-          <Text><Limits /></Text>
+          <Limits />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: 'settingsIcon'}}
-          style={styles.tabBarIcon}
           title="Settings"
           selected={this.state.selectedTab === 'Settings'}
           onPress={() => this.setTab('Settings')}>
-          <Text><Settings /></Text>
+          <Settings />
         </TabBarIOS.Item>
       </TabBarIOS>
     );

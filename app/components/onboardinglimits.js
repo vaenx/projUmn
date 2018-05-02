@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, Slider } from 'react-native';
 import Overview from './overview';
 import OnboardingGoals from './onboardinggoals';
+import TabApp from './tabapp';
 
 export default class OnboardingLimits extends React.Component {
   constructor(props) {
@@ -23,9 +24,11 @@ export default class OnboardingLimits extends React.Component {
     })
   }
   handleToOverview() {
-    this.props.navigator.push({
-      component: Overview,
-    })
+    this.props.navigator.replaceAtIndex({
+      component: TabApp,
+      navigationBarHidden: true,
+    }, 0);
+    this.props.navigator.popN(3);
   }
   handleBackToGoals() {
     this.props.navigator.pop({

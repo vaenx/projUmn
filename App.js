@@ -18,6 +18,8 @@ import {
 import TabApp from './app/components/tabapp';
 import Main from './app/components/main';
 
+import Overview from './app/components/overview';
+
 export class App extends React.Component {
   render() {
     return (
@@ -35,7 +37,7 @@ export default class AppNavigator extends React.Component {
           navigationBarHidden: true,
           translucent: true,
           shadowHidden: true,
-          component: TabApp
+          component: Main
         }}
         style={styles.mainContainer}/>
     );
