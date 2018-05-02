@@ -17,7 +17,7 @@ export default class TabApp extends React.Component {
     return (
       <TabBarIOS
         barTintColor="white"
-        tintColor="#0187B3"
+        tintColor="#011B22"
         clipToBounds="true"
         style={styles.tabbar}>
         <TabBarIOS.Item

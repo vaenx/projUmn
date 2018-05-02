@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View, TouchableHighlight, ActivityIndicatorIOS, Slider, Switch } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View, TouchableHighlight, TabBarIOS, ActivityIndicatorIOS, Slider, Switch } from 'react-native';
 import TabApp from './tabapp';
 
 export default class Limits extends React.Component {
@@ -55,6 +55,7 @@ export default class Limits extends React.Component {
             </View>
           </ScrollView>
         </View>
+        <TabBarIOS></TabBarIOS>
       </View>
     );
   }
@@ -169,10 +170,9 @@ const styles = StyleSheet.create({
     marginHorizontal: "10%",
   },
   mainContainer: {
-    flex: 1,
     backgroundColor: 'white',
     marginTop: "5%",
-    marginBottom: 100,
+    marginBottom: 140,
     width: "90%",
     alignSelf: "center",
     borderRadius: 10,

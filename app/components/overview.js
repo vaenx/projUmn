@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, View, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground } from 'react-native';
 import TabApp from './tabapp';
 
 export default class Overview extends React.Component {
@@ -16,6 +16,7 @@ export default class Overview extends React.Component {
           <Text style={styles.textTitleH2}>[counter] unlocks today</Text>
           <Text style={styles.textBody}>You have reached [%] of your time limit for today.</Text>
         </View>
+        <TabBarIOS></TabBarIOS>
       </View>
     );
   }
@@ -58,10 +59,9 @@ const styles = StyleSheet.create({
     marginHorizontal: "10%",
   },
   mainContainer: {
-    flex: 1,
     backgroundColor: 'white',
     marginTop: "5%",
-    marginBottom: 100,
+    height: "77.7%",
     width: "90%",
     alignSelf: "center",
     borderRadius: 10,
