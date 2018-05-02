@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    marginHorizontal: "10%",
+    marginHorizontal: "6.5%",
   },
   mainContainer: {
     backgroundColor: 'white',
     marginTop: "5%",
     height: "77.7%",
-    width: "90%",
+    width: "100%",
     alignSelf: "center",
     borderRadius: 10,
     shadowColor: 'black',
