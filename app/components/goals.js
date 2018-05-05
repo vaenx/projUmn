@@ -94,18 +94,18 @@ export default class Goals extends React.Component {
         <Text style={styles.textNeutral}>[hours] on screen today</Text>
         <View style={styles.mainContainer}>
           <ScrollView>
+            <GoalCount
+              countComplete={filterItems("COMPLETED", this.state.items).length}
+              countAll={filterItems("ALL", this.state.items).length}
+              onFilter={this.handleFilter}
+              filter={this.state.filter}
+            />
             <Text style={styles.textBody}>achieved goals</Text>
             <Text style={styles.textInfo}>Top time on screen: [timeonscreen]
             {"\n"}
             <Text style={styles.textInfo}>Top unlocks: [unlocks]</Text></Text>
             <View>
             <Text style={styles.textInfo}>Set personal goals to make your time count and help you focus on what matters most for your life.</Text>
-              <GoalCount
-                countComplete={filterItems("COMPLETED", this.state.items).length}
-                countAll={filterItems("ALL", this.state.items).length}
-                onFilter={this.handleFilter}
-                filter={this.state.filter}
-              />
               <GoalList
                 value={this.state.value}
                 onAddItem={this.handleAddItem}

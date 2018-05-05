@@ -10,17 +10,6 @@ export default class GoalCount extends React.Component {
           <Text style={styles.counterStyleSmall}>/{this.props.countAll}
           </Text>
         </Text>
-        <View style={styles.filters}>
-          <TouchableOpacity style={[styles.filter, filter === "ALL" && styles.selected]} onPress={() => this.props.onFilter("ALL")}>
-            <Text>All</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.filter, filter === "ACTIVE" && styles.selected]} onPress={() => this.props.onFilter("ACTIVE")}>
-            <Text>Active</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.filter, filter === "COMPLETED" && styles.selected]} onPress={() => this.props.onFilter("COMPLETED")}>
-            <Text>Completed</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     );
   }
