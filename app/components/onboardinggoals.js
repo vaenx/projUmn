@@ -99,7 +99,7 @@ export default class OnboardingGoals extends React.Component {
                 value={this.state.value}
                 onAddItem={this.handleAddItem}
                 onChange={(value) => this.setState({value})}
-              />
+                onToggleAllComplete={this.handleToggleAllComplete}/>
               <ListView
                 style={styles.list}
                 enableEmptySection
