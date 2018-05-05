@@ -19,6 +19,7 @@ import TabApp from './app/components/tabapp';
 import Main from './app/components/main';
 import Overview from './app/components/overview';
 import OnboardingGoals from './app/components/onboardinggoals';
+import Goals from './app/components/goals';
 
 export default class AppNavigator extends React.Component {
   render() {
@@ -29,7 +30,7 @@ export default class AppNavigator extends React.Component {
           navigationBarHidden: true,
           translucent: true,
           shadowHidden: true,
-          component: OnboardingGoals
+          component: Goals
         }}
         style={styles.mainContainer}/>
     );

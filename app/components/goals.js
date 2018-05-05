@@ -1,83 +1,143 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View, TabBarIOS, Image, TouchableHighlight } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View, TabBarIOS, ImageBackground, Image, TouchableHighlight, ListView, Keyboard, AsyncStorage, TextInput } from 'react-native';
 import TabApp from './tabapp';
+import GoalList from './goallist';
+import Row from './row';
+import GoalCount from './goalcount';
 
+const filterItems = (filter, items) => {
+  return items.filter((item) => {
+    if (filter === "ALL") return true;
+    if (filter === "COMPLETED") return item.complete;
+    if (filter === "ACTIVE") return !item.complete;
+  })
+}
 export default class Goals extends React.Component {
   constructor(props) {
     super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state={
+      allComplete: false,
+      filter: "ALL",
+      value: '',
+      items: [],
+      dataSource: ds.cloneWithRows([])
+    };
+    this.handleFilter = this.handleFilter.bind(this);
+    this.handleRemoveItem = this.handleRemoveItem.bind(this);
+    this.handleToggleComplete = this.handleToggleComplete.bind(this);
+    this.setSource = this.setSource.bind(this);
+    this.handleAddItem = this.handleAddItem.bind(this);
+    this.handleToggleAllComplete = this.handleToggleAllComplete.bind(this);
   }
-  handleAddNewGoal() {
+  componentWillMount() {
+    AsyncStorage.getItem('items').then((json) => {
+      try {
+        const items = JSON.parse(json);
+        this.setSource(items, items);
+      } catch(e) {
 
+      }
+    })
   }
-  handleCheckThisGoal() {
+  setSource(items, itemsDatasource, otherState = {}) {
+    this.setState({
+      items,
+      dataSource: this.state.dataSource.cloneWithRows(itemsDatasource),
+      ...otherState
+    })
+    AsyncStorage.setItem('items', JSON.stringify(items));
+  }
+  handleFilter(filter) {
+    this.setSource(this.state.items, filterItems(filter, this.state.items), { filter })
+  }
+  handleRemoveItem(key) {
+    const newItems = this.state.items.filter((item) => {
+      return item.key !== key
+    })
+    this.setSource(newItems, filterItems(this.state.filter, newItems));
+  }
+  handleToggleComplete(key, complete) {
+    const newItems = this.state.items.map((item) => {
+      if (item.key !== key) return item;
+      return {
+        ...item,
+        complete
+      }
+    })
+    this.setSource(newItems, filterItems(this.state.filter, newItems));
+  }
+  handleToggleAllComplete() {
+    const complete = !this.state.allComplete;
+    const newItems = this.state.items.map((item) => ({
+      ...item,
+      complete
+    }))
+    this.setSource(newItems, filterItems(this.state.filter, newItems), {allComplete: complete})
+  }
+  handleAddItem() {
+    if (!this.state.value) return;
+    const newItems = [
+      ...this.state.items,
+      {
+        key: Date.now(),
+        text: this.state.value,
+        complete: false
+      }
+    ]
+    this.setSource(newItems, filterItems(this.state.filter, newItems), {value:''})
+  }
 
-  }
-  handleRemoveThisGoal() {
-
-  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.textNeutral}>[hours] on screen today</Text>
         <View style={styles.mainContainer}>
           <ScrollView>
-            <Text style={styles.counterStyle}>0
-              <Text style={styles.counterStyleSmall}>/3</Text>
-            </Text>
             <Text style={styles.textBody}>achieved goals</Text>
             <Text style={styles.textInfo}>Top time on screen: [timeonscreen]
             {"\n"}
             <Text style={styles.textInfo}>Top unlocks: [unlocks]</Text></Text>
+            <View>
+            <Text style={styles.textInfo}>Set personal goals to make your time count and help you focus on what matters most for your life.</Text>
+              <GoalCount
+                countComplete={filterItems("COMPLETED", this.state.items).length}
+                countAll={filterItems("ALL", this.state.items).length}
+                onFilter={this.handleFilter}
+                filter={this.state.filter}
+              />
+              <GoalList
+                value={this.state.value}
+                onAddItem={this.handleAddItem}
+                onChange={(value) => this.setState({value})}
+                onToggleAllComplete={this.handleToggleAllComplete}/>
+              <ListView
+                enableEmptySection
+                dataSource={this.state.dataSource}
+                onScroll={() => Keyboard.dismiss()}
+                renderRow={({key, ...value}) => {
+                  return (
+                    <Row
+                      key={key}
+                      onRemove={() => this.handleRemoveItem(key)}
+                      onComplete={(complete) => this.handleToggleComplete(key, complete)}
+                      {...value}
+                    />
+                  )
+                }}
+                renderSeparator={(sectionId, rowId) => {
+                  return <View key={rowId} style={styles.separator}/>
+                }}
+              />
+            </View>
             <Text style={styles.textBodySmallRight}>8h</Text>
             <View style={styles.underLine}/>
-            <Image source={{uri: 'placeholderGoalsGraph'}}/>
+            <ImageBackground source={{uri: 'progressGraph'}} style={styles.bgImage}>
+              <Text></Text>
+            </ImageBackground>
             <View style={styles.underLine}/>
             <Text style={styles.textBodyRight}>total overtime
             <Text style={styles.textBodyBold}>[overtime]]</Text>{"\n"}</Text>
-            <Text style={styles.textInfo}>Make sure you do not overcome your limits and use saved time to accomplish your personal goals.</Text>
-            <View style={styles.goalListContainer}>
-              <TouchableHighlight
-                style={styles.buttonCheckGoal}
-                onPress={this.handleCheckThisGoal.bind(this)}
-                underlayColor='white'>
-                <Text style={styles.buttonAddGoalText}></Text>
-              </TouchableHighlight>
-              <Text style={styles.textGoal}>Start a personal project.</Text>
-              <TouchableHighlight
-                style={styles.buttonRemove}
-                onPress={this.handleRemoveThisGoal.bind(this)}
-                underlayColor='white'>
-              <Text style={styles.textNeutral}>Remove.</Text>
-              </TouchableHighlight>
-            </View>
-            <View style={styles.goalListContainer}>
-              <TouchableHighlight
-                style={styles.buttonCheckGoal}
-                onPress={this.handleCheckThisGoal.bind(this)}
-                underlayColor='white'>
-                <Text style={styles.buttonAddGoalText}></Text>
-              </TouchableHighlight>
-              <Text style={styles.textGoal}>Organize holidays.</Text>
-            </View>
-            <View style={styles.goalListContainer}>
-              <TouchableHighlight
-                style={styles.buttonCheckGoal}
-                onPress={this.handleCheckThisGoal.bind(this)}
-                underlayColor='white'>
-                <Text style={styles.buttonAddGoalText}></Text>
-              </TouchableHighlight>
-              <Text style={styles.textGoal}>Read a book.</Text>
-            </View>
-            <View style={styles.addGoalContainer}>
-              <TouchableHighlight
-                style={styles.buttonAddGoal}
-                onPress={this.handleAddNewGoal.bind(this)}
-                underlayColor='#023543'>
-                <Text style={styles.buttonAddGoalText}>+</Text>
-              </TouchableHighlight>
-              <Text style={styles.addGoalText}>Add new goal</Text>
-            </View>
-            <Text style={styles.textInfo}>Set personal goals to make your time count and help you focus on what matters most for your life.</Text>
           </ScrollView>
         </View>
         <TabBarIOS></TabBarIOS>
@@ -222,5 +282,12 @@ const styles = StyleSheet.create({
     color: '#011B22',
     textAlignVertical: "center",
     paddingTop: "1%"
+  },
+  bgImage: {
+    width: "80%",
+    height: 165,
+    alignSelf: "flex-end",
+    marginVertical: "20%",
+    marginHorizontal: "10%",
   },
 });
