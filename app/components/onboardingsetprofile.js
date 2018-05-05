@@ -44,20 +44,19 @@ export default class OnboardingSetProfile extends React.Component {
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set your profile</Text>
-            <Text style={styles.textBody}>Birthday (DD/MM/YYYY)</Text>
-              <DatePickerIOS
-                date={this.state.chosenDate}
-                onDateChange={this.setDate}
-                mode="date"/>
-              <TextInput
-                style={styles.inputField}
-                value={this.state.birthday}
-                onChange={this.handleChangeBirthday.bind(this)} />
             <Text style={styles.textBody}>Gender (Male/Female)</Text>
               <TextInput
                 style={styles.inputField}
                 value={this.state.gender}
-                onChange={this.handleChangeGender.bind(this)} />
+                onChange={this.handleChangeGender.bind(this)}
+                returnKeyType="done" />
+            <Text style={styles.textBody}>Birthday (DD/MM/YYYY)</Text>
+              <DatePickerIOS
+                date={this.state.chosenDate}
+                onDateChange={this.setDate}
+                mode="date"
+                value={this.state.birthday}
+                onChange={this.handleChangeBirthday.bind(this)}/>
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight
