@@ -1,49 +1,33 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker } from 'react-native';
-import OnboardingSetProfile2 from './onboardingsetprofile2';
-import Main from './main';
-import SetProfileFormGender from './setprofileformgender';
 
-export default class OnboardingSetProfile extends React.Component {
+export default class SetProfileFormBday extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      chosenDate: new Date(),
+      selectedValue: ''
+    };
+    this.handleChangeBdayDate = this.handleChangeBdayDate.bind(this);
   }
-  handleOnboardingSetProfile2() {
-    this.props.navigator.push({
-      component: OnboardingSetProfile2,
-      navigationBarHidden: true,
+
+  handleChangeBdayDate(newDate) {
+    this.setState({
+      chosenDate: newDate
     })
   }
-  handleBackToMain() {
-    this.props.navigator.pop({
-      component: Main,
-      navigationBarHidden: true,
-    })
-  }
+
   render() {
-    return (
-      <ImageBackground source={{uri: 'bgLightBlueAlt'}} style={styles.bgImage}>
-        <View style={styles.container}>
-          <ScrollView>
-            <Text style={styles.textTitle}>Set your profile</Text>
-            <SetProfileFormGender />
-          </ScrollView>
-        <View style={styles.buttonContainer}>
-          <TouchableHighlight
-            style={styles.buttonBack}
-            onPress={this.handleBackToMain.bind(this)}
-            underlayColor='white'>
-            <Text style={styles.buttonTextNegative}>BACK</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.buttonContinueSmall}
-            onPress={this.handleOnboardingSetProfile2.bind(this)}
-            underlayColor='#023543'>
-            <Text style={styles.buttonText}>CONTINUE</Text>
-          </TouchableHighlight>
-        </View>
-        </View>
-      </ImageBackground>
+    return(
+      <View>
+        <Text style={styles.textBody}>Select your Birthday Date</Text>
+        <Text style={styles.textBody}>I was born on {this.handleChangeBdayDate}</Text>
+        <DatePickerIOS
+          selectedValue={this.state.chosenDate}
+          date={this.state.chosenDate}
+          onDateChange={() => this.handleChangeBdayDate}
+          mode="date"/>
+      </View>
     );
   }
 }

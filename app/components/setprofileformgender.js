@@ -1,49 +1,28 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker } from 'react-native';
-import OnboardingSetProfile2 from './onboardingsetprofile2';
-import Main from './main';
-import SetProfileFormGender from './setprofileformgender';
 
-export default class OnboardingSetProfile extends React.Component {
+export default class SetProfileFormGender extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      gender: [],
+      selectedValue: ''
+    };
   }
-  handleOnboardingSetProfile2() {
-    this.props.navigator.push({
-      component: OnboardingSetProfile2,
-      navigationBarHidden: true,
-    })
-  }
-  handleBackToMain() {
-    this.props.navigator.pop({
-      component: Main,
-      navigationBarHidden: true,
-    })
-  }
+
   render() {
-    return (
-      <ImageBackground source={{uri: 'bgLightBlueAlt'}} style={styles.bgImage}>
-        <View style={styles.container}>
-          <ScrollView>
-            <Text style={styles.textTitle}>Set your profile</Text>
-            <SetProfileFormGender />
-          </ScrollView>
-        <View style={styles.buttonContainer}>
-          <TouchableHighlight
-            style={styles.buttonBack}
-            onPress={this.handleBackToMain.bind(this)}
-            underlayColor='white'>
-            <Text style={styles.buttonTextNegative}>BACK</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.buttonContinueSmall}
-            onPress={this.handleOnboardingSetProfile2.bind(this)}
-            underlayColor='#023543'>
-            <Text style={styles.buttonText}>CONTINUE</Text>
-          </TouchableHighlight>
-        </View>
-        </View>
-      </ImageBackground>
+    return(
+      <View>
+        <Text style={styles.textBody}>Select your Gender</Text>
+        <Text style={styles.textBody}>I am a {this.state.gender}</Text>
+        <Picker
+          selectedValue={this.state.gender}
+          style={{ marginTop: "5%", width: "100%" }}
+          onValueChange={(itemValue, itemIndex) => this.setState({gender: itemValue})}>
+          <Picker.Item label="Female" value="Female" />
+          <Picker.Item label="Male" value="Male" />
+        </Picker>
+      </View>
     );
   }
 }

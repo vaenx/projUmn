@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     marginTop: "6%",
     marginHorizontal: "10%",
     marginBottom: "5%",
-    fontSize: 14,
+    fontSize: 16,
     lineHeight: 20
   },
   textBodyBold: {

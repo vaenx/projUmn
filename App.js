@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   Platform,
@@ -20,6 +14,8 @@ import Main from './app/components/main';
 import Overview from './app/components/overview';
 import OnboardingGoals from './app/components/onboardinggoals';
 import Goals from './app/components/goals';
+import OnboardingSetProfile from './app/components/onboardingsetprofile';
+import OnboardingSetProfile2 from './app/components/onboardingsetprofile2';
 
 export default class AppNavigator extends React.Component {
   render() {
@@ -30,7 +26,7 @@ export default class AppNavigator extends React.Component {
           navigationBarHidden: true,
           translucent: true,
           shadowHidden: true,
-          component: Goals
+          component: OnboardingSetProfile
         }}
         style={styles.mainContainer}/>
     );

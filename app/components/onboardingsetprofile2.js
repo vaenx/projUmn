@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker } from 'react-native';
-import OnboardingSetProfile2 from './onboardingsetprofile2';
-import Main from './main';
-import SetProfileFormGender from './setprofileformgender';
+import OnboardingGoals from './onboardinggoals';
+import OnboardingSetProfile from './onboardingsetprofile';
+import OnboardingSetProfile3 from './onboardingsetprofile3';
+import SetProfileFormBday from './setprofileformbday';
 
-export default class OnboardingSetProfile extends React.Component {
+export default class OnboardingSetProfile2 extends React.Component {
   constructor(props) {
     super(props);
   }
-  handleOnboardingSetProfile2() {
+  handleOnboardingSetProfile3() {
     this.props.navigator.push({
-      component: OnboardingSetProfile2,
+      component: OnboardingSetProfile3,
       navigationBarHidden: true,
     })
   }
-  handleBackToMain() {
+  handleBackToOnboardingSetProfile() {
     this.props.navigator.pop({
-      component: Main,
+      component: OnboardingSetProfile,
       navigationBarHidden: true,
     })
   }
@@ -26,18 +27,18 @@ export default class OnboardingSetProfile extends React.Component {
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set your profile</Text>
-            <SetProfileFormGender />
+            <SetProfileFormBday />
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight
             style={styles.buttonBack}
-            onPress={this.handleBackToMain.bind(this)}
+            onPress={this.handleBackToOnboardingSetProfile.bind(this)}
             underlayColor='white'>
             <Text style={styles.buttonTextNegative}>BACK</Text>
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.buttonContinueSmall}
-            onPress={this.handleOnboardingSetProfile2.bind(this)}
+            onPress={this.handleOnboardingSetProfile3.bind(this)}
             underlayColor='#023543'>
             <Text style={styles.buttonText}>CONTINUE</Text>
           </TouchableHighlight>
