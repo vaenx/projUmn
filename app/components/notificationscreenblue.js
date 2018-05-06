@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, NavigatorIOS, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground } from 'react-native';
 
-export default class NotificationScreen extends React.Component {
+export default class NotificationScreenBlue extends React.Component {
   render() {
     return (
       <ImageBackground source={{uri: 'bg_blue_motive'}} style={styles.bgImage}>
