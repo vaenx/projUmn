@@ -3,32 +3,19 @@ import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, Tou
 import Overview from './overview';
 import OnboardingGoals from './onboardinggoals';
 import TabApp from './tabapp';
+import TimeOnScreenLimit from './timeonscreenlimit';
+import UnlocksLimit from './unlockslimit';
 
 export default class OnboardingLimits extends React.Component {
   constructor(props) {
     super(props);
-    this.state= {
-      maxHours: 8,
-      maxUnlocks: 300,
-    }
-    this.setState = this.setState.bind(this);
-  }
-  onValueChangeTime(valueTime) {
-    this.props.value({
-      valueTime: '',
-    })
-  }
-  onValueChangeUnlocks(valueUnlocks) {
-    this.props.value({
-      valueUnlocks: '',
-    })
   }
   handleToOverview() {
     this.props.navigator.replaceAtIndex({
       component: TabApp,
       navigationBarHidden: true,
     }, 0);
-    this.props.navigator.popN(3);
+    this.props.navigator.popN(5);
   }
   handleBackToGoals() {
     this.props.navigator.pop({
@@ -42,22 +29,8 @@ export default class OnboardingLimits extends React.Component {
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set time limits</Text>
-            <Text style={styles.textSlider}>Time on screen</Text>
-            <Text style={styles.textDailyLimit}>Your daily limit: {this.state.onValueChangeTime}</Text>
-            <Slider
-              style={styles.timeOnScreenSlider}
-              maximumValue={this.state.maxHours}
-              onValueChange={this.state.onValueChangeTime}
-              step={1} />
-            <Text style={styles.textSliderLabel}>Recommended: 3h</Text>
-            <Text style={styles.textSlider}>Phone Unlocks</Text>
-            <Text style={styles.textDailyLimit}>Your daily limit: {this.state.onValueChangeUnlocks}</Text>
-            <Slider
-              style={styles.timeOnScreenSlider}
-              maximumValue={this.state.maxUnlocks}
-              thumbTintColor='#023543'
-              step={10} />
-            <Text style={styles.textSliderLabel}>Recommended: 90 unlocks</Text>
+            <TimeOnScreenLimit />
+            <UnlocksLimit />
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight

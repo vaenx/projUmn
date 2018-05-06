@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker, Slider } from 'react-native';
 
-export default class SetProfileFormGender extends React.Component {
+export default class TimeOnScreenLimit extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
-      gender: [],
-      selectedValue: ''
+    this.state = {
+      timelimit: 0,
     };
   }
 
+  change(timelimit) {
+    this.setState(() => {
+      return {
+        timelimit: parseFloat(timelimit),
+      };
+    });
+  }
+
   render() {
-    return(
+    const {timelimit} = this.state;
+    return (
       <View>
-        <Text style={styles.textBody}>Select your Gender</Text>
-        <Picker
-          selectedValue={this.state.gender}
-          style={{ marginTop: "5%", width: "100%" }}
-          onValueChange={(itemValue, itemIndex) => this.setState({gender: itemValue})}>
-          <Picker.Item label="Female" value="Female" />
-          <Picker.Item label="Male" value="Male" />
-        </Picker>
+        <Text style={styles.textDailyLimit}>Daily limit: {String(timelimit)}h</Text>
+        <Slider
+          style={styles.timeOnScreenSlider}
+          step={1}
+          maximumValue={8}
+          onValueChange={this.change.bind(this)}
+          timelimit={timelimit} />
+        <Text style={styles.textSliderLabel}>Challenge: 2 hours</Text>
       </View>
     );
   }
@@ -40,16 +48,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26,
   },
-  inputField: {
-    marginTop: 10,
+  textSlider: {
+    marginTop: "12%",
     marginHorizontal: "10%",
-    borderBottomColor: '#011B22',
-    borderRightColor: 'white',
-    borderLeftColor: 'white',
-    borderTopColor: 'white',
-    borderWidth: 1,
-    height: 30,
-    fontSize: 16,
+    fontSize: 18,
+  },
+  textSliderLabel: {
+    marginTop: "3%",
+    marginHorizontal: "10%",
+    color: '#797979',
+    fontSize: 14
+  },
+  textDailyLimit: {
+    marginTop: "5%",
+    marginRight: "10%",
+    color: '#011B22',
+    fontSize: 14,
+    alignSelf: "flex-end"
+  },
+  timeOnScreenSlider: {
+    width: "80%",
+    marginHorizontal: "10%",
+    marginTop: "10%",
   },
   buttonText: {
     color: "white",

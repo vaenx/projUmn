@@ -23,6 +23,10 @@ export default class Settings extends React.Component {
               <Text style={styles.textBodyRow}>Gender</Text>
               <Text style={styles.textNeutralRow}>[gender]</Text>
             </View>
+            <View style={styles.rowContainer}>
+              <Text style={styles.textBodyRow}>Country</Text>
+              <Text style={styles.textNeutralRow}>[country]</Text>
+            </View>
             <View style={styles.underLine}/>
             <Text style={styles.textInfo}>About Umn</Text>
             <Text style={styles.textBodyAlt}>Most digital services feed on people’s attention and are therefore designed to have you spend more time there. From endless scrolling to addictive pull-down-to-refresh features, digital businesses use powerful persuasive design techniques to keep us hooked to our devices.{"\n"}

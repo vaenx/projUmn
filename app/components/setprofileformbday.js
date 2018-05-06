@@ -21,7 +21,6 @@ export default class SetProfileFormBday extends React.Component {
     return(
       <View>
         <Text style={styles.textBody}>Select your Birthday Date</Text>
-        <Text style={styles.textBody}>I was born on {this.handleChangeBdayDate}</Text>
         <DatePickerIOS
           selectedValue={this.state.chosenDate}
           date={this.state.chosenDate}

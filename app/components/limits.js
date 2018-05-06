@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View, TouchableHighlight, TabBarIOS, ActivityIndicatorIOS, Slider, Switch } from 'react-native';
 import TabApp from './tabapp';
+import TimeOnScreenLimit from './timeonscreenlimit';
+import UnlocksLimit from './unlockslimit';
 
 export default class Limits extends React.Component {
   constructor(props) {
     super(props);
-    this.state= {
-      maxHours: 8,
-      maxUnlocks: 300,
-    }
-    this.setState = this.setState.bind(this);
-  }
-  onValueChangeTime(valueTime) {
-    this.props.value({
-      valueTime: '',
-    })
-  }
-  onValueChangeUnlocks(valueUnlocks) {
-    this.props.value({
-      valueUnlocks: '',
-    })
   }
   render() {
     return (
@@ -32,27 +19,18 @@ export default class Limits extends React.Component {
             <Text style={styles.textInfo}>Time saved is a weekly calculation based on your time limit set.</Text>
             <View style={styles.underLine}/>
             <Text style={styles.textTitleH2}>Set Time Limits</Text>
-            <Text style={styles.textSlider}>Time on screen</Text>
-            <Text style={styles.textDailyLimit}>Your daily limit: {this.state.onValueChangeTime}</Text>
-            <Slider
-              style={styles.timeOnScreenSlider}
-              maximumValue={this.state.maxHours}
-              onValueChange={this.state.onValueChangeTime}
-              step={1} />
-            <Text style={styles.textSliderLabel}>Recommended: 3h</Text>
-            <Text style={styles.textSlider}>Phone Unlocks</Text>
-            <Text style={styles.textDailyLimit}>Your daily limit: {this.state.onValueChangeUnlocks}</Text>
-            <Slider
-              style={styles.timeOnScreenSlider}
-              maximumValue={this.state.maxUnlocks}
-              thumbTintColor='#023543'
-              step={10} />
-            <Text style={styles.textSliderLabel}>Recommended: 90 unlocks</Text>
+            <TimeOnScreenLimit />
+            <UnlocksLimit />
             <Text style={styles.textInfoAlert}>Make sure notifications are on to receive a reminder when your time limit is exceeded.</Text>
             <View style={styles.switchContainer}>
               <Text style={styles.textReminder}>Send me limit reminders</Text>
               <Switch></Switch>
             </View>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
           </ScrollView>
         </View>
         <TabBarIOS></TabBarIOS>
