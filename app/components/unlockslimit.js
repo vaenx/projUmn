@@ -24,6 +24,8 @@ export default class UnlocksLimit extends React.Component {
         <Slider
           style={styles.timeOnScreenSlider}
           step={10}
+          minimumTrackTintColor="#01B3A7"
+          thumbImage={{uri: 'thumbCustom'}}
           maximumValue={500}
           onValueChange={this.change.bind(this)}
           unlock={unlock} />

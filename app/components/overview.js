@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight } from 'react-native';
 import TabApp from './tabapp';
+import TimeOfDeath from './timeofdeath';
 
 export default class Overview extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  handleTimeOfDeath() {
+    this.props.navigator.replace({
+      component: TimeOfDeath,
+      navigationBarHidden: true,
+    })
+  }
+  handleOverview() {
+    this.props.navigator.replace({
+      component: Overview,
+      navigationBarHidden: true,
+    })
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -13,8 +29,11 @@ export default class Overview extends React.Component {
           <ImageBackground source={{uri: 'overviewGraph'}} style={styles.bgImage}>
             <Text></Text>
           </ImageBackground>
-          <Text style={styles.textTitleH2}>[counter] unlocks today</Text>
-          <Text style={styles.textBody}>You have reached [%] of your time limit for today.</Text>
+          <TouchableHighlight
+          onLongPress={this.handleTimeOfDeath.bind(this)}
+          onPressOut={this.handleOverview.bind(this)}>
+          <Text style={styles.textBody}>Press for Umn</Text>
+          </TouchableHighlight>
         </View>
         <TabBarIOS></TabBarIOS>
       </View>

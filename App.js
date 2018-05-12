@@ -14,6 +14,7 @@ import OnboardingLimits from './app/components/onboardinglimits';
 import NotificationScreenBlue from './app/components/notificationscreenblue';
 import NotificationScreenRed from './app/components/notificationscreenred';
 import NotificationScreenNude from './app/components/notificationscreennude';
+import TimeOfDeath from './app/components/timeofdeath';
 
 export default class AppNavigator extends React.Component {
   render() {
@@ -24,7 +25,7 @@ export default class AppNavigator extends React.Component {
           navigationBarHidden: true,
           translucent: true,
           shadowHidden: true,
-          component: Main
+          component: TimeOfDeath,
         }}
         style={styles.mainContainer}/>
     );

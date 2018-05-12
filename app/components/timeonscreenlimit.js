@@ -25,6 +25,8 @@ export default class TimeOnScreenLimit extends React.Component {
         <Slider
           style={styles.timeOnScreenSlider}
           step={1}
+          minimumTrackTintColor="#01B3A7"
+          thumbImage={{uri: 'thumbCustom'}}
           maximumValue={8}
           onValueChange={this.change.bind(this)}
           timelimit={timelimit} />
