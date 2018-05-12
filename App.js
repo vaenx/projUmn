@@ -25,7 +25,7 @@ export default class AppNavigator extends React.Component {
           navigationBarHidden: true,
           translucent: true,
           shadowHidden: true,
-          component: TimeOfDeath,
+          component: Overview,
         }}
         style={styles.mainContainer}/>
     );

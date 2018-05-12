@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image } from 'react-native';
 import TabApp from './tabapp';
 import TimeOfDeath from './timeofdeath';
 
@@ -13,27 +13,27 @@ export default class Overview extends React.Component {
       navigationBarHidden: true,
     })
   }
-  handleOverview() {
-    this.props.navigator.replace({
-      component: Overview,
-      navigationBarHidden: true,
-    })
-  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.textNeutral}>You have [counter] hours left to live.</Text>
         <View style={styles.mainContainer}>
-          <Text style={styles.counterStyle}>[time counter]</Text>
-          <Text style={styles.textBody}>time on screen</Text>
-          <ImageBackground source={{uri: 'overviewGraph'}} style={styles.bgImage}>
-            <Text></Text>
-          </ImageBackground>
-          <TouchableHighlight
-          onLongPress={this.handleTimeOfDeath.bind(this)}
-          onPressOut={this.handleOverview.bind(this)}>
-          <Text style={styles.textBody}>Press for Umn</Text>
-          </TouchableHighlight>
+          <Text style={styles.textInfo1}>Your online path is now visible.</Text>
+          <Text style={styles.counterStyle}>00h23m</Text>
+          <Text style={styles.counterStyleSmaller}>out of 02h30m</Text>
+          <Text style={styles.textInfo}>time on screen</Text>
+          <Text style={styles.counterStyleUnlock}>23<Text style={styles.textBody}>/90</Text></Text>
+          <Text style={styles.textInfo}>unlocks</Text>
+          <Image source={{uri: 'concentricPulseTODAlt'}} style={styles.bgImage}></Image>
+          <View style={styles.containerButton}>
+            <TouchableHighlight
+              style={styles.buttonUmn}
+              onLongPress={this.handleTimeOfDeath.bind(this)}
+              underlayColor="white">
+              <Image source={{uri: 'umnTODlogoMain'}} style={styles.bgImageButton}>
+              </Image>
+            </TouchableHighlight>
+            <Text style={styles.textNeutral}>Press for Umn</Text>
+          </View>
         </View>
         <TabBarIOS></TabBarIOS>
       </View>
@@ -42,24 +42,30 @@ export default class Overview extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  textNeutral: {
-    marginTop: "15%",
-    color: '#797979',
+  textInfo1: {
+    marginTop: "12%",
     alignSelf: "center",
     fontSize: 14
   },
+  textNeutral: {
+    marginTop: "3%",
+    alignSelf: "center",
+    fontSize: 12,
+    color: "#A7A7A7",
+  },
   textBody: {
-    marginTop: "2%",
+    marginTop: "12%",
     marginHorizontal: "10%",
     fontSize: 16,
     lineHeight: 24,
+    textAlign: "center",
   },
   textInfo: {
-    marginTop: "6%",
+    marginTop: "3%",
     marginHorizontal: "10%",
     marginBottom: "5%",
     fontSize: 14,
-    lineHeight: 20
+    textAlign: "center"
   },
   textTitleH2: {
     marginTop: "6%",
@@ -68,10 +74,21 @@ const styles = StyleSheet.create({
     fontWeight: "800",
   },
   counterStyle: {
-    marginHorizontal: "10%",
+    textAlign: "center",
     fontSize: 50,
     fontWeight: "bold",
-    marginTop: "12%",
+    marginTop: "8%",
+  },
+  counterStyleSmaller: {
+    textAlign: "center",
+    fontSize: 18,
+    marginTop: "3%",
+  },
+  counterStyleUnlock: {
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "bold",
+    marginTop: "1%",
   },
   container: {
     flex: 1,
@@ -79,8 +96,7 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     backgroundColor: 'white',
-    marginTop: "5%",
-    height: "77.7%",
+    marginTop: "18%",
     width: "100%",
     alignSelf: "center",
     borderRadius: 10,
@@ -88,6 +104,10 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
+  },
+  containerButton: {
+    marginHorizontal: "12%",
+    marginVertical: "5%",
   },
   underLine: {
     width: "80%",
@@ -100,10 +120,21 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   bgImage: {
-    marginLeft: "10%",
-    width: "90%",
-    height: 165,
-    alignSelf: "flex-end",
-    marginVertical: "20%",
+    margin: "10%",
+    alignSelf: "center",
+    width: 250,
+    height: 283,
+    alignSelf: "center",
+    alignContent: "center",
+    marginVertical: "-5%",
+  },
+  buttonUmn: {
+    marginTop: "12%",
+    marginBottom: "3%",
+  },
+  bgImageButton: {
+    width: 103,
+    height: 36,
+    alignSelf: "center",
   },
 });
