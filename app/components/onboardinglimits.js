@@ -5,12 +5,14 @@ import OnboardingGoals from './onboardinggoals';
 import TabApp from './tabapp';
 import TimeOnScreenLimit from './timeonscreenlimit';
 import UnlocksLimit from './unlockslimit';
+import {setAppLaunched} from '../utils/checkIfFirstLaunch';
 
 export default class OnboardingLimits extends React.Component {
   constructor(props) {
     super(props);
   }
   handleToOverview() {
+    setAppLaunched();
     this.props.navigator.replaceAtIndex({
       component: TabApp,
       navigationBarHidden: true,

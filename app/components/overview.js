@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image } from 'react-native';
 import TabApp from './tabapp';
 import TimeOfDeath from './timeofdeath';
+import LockStateCheck from '../utils/lockstateCheck';
 
 export default class Overview extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class Overview extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <LockStateCheck />
         <View style={styles.mainContainer}>
           <Text style={styles.textInfo1}>Your online path is now visible.</Text>
           <Text style={styles.counterStyle}>00h23m</Text>
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
     margin: "10%",
     alignSelf: "center",
     width: 250,
-    height: 283,
+    height: 253,
     alignSelf: "center",
     alignContent: "center",
     marginVertical: "-5%",

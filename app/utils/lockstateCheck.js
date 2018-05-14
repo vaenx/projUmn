@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { RNLockState } from 'react-native-lockstate';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, AppState } from 'react-native';
 
 export default class LockStateCheck extends Component {
   state = {
@@ -24,7 +24,7 @@ export default class LockStateCheck extends Component {
 
   render() {
     return (
-      <Text>Current state is: {this.state.appState}</Text>
+        <Text>Current state is: {this.state.appState}</Text>
     );
   }
 

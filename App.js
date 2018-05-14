@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, AppState } from 'react-native';
 import LockStateCheck from './app/utils/lockstateCheck';
+import { checkIfFirstLaunch } from './app/utils/checkIfFirstLaunch';
 
+import Test from './app/components/test';
 import TabApp from './app/components/tabapp';
 import Main from './app/components/main';
 import Overview from './app/components/overview';
@@ -18,16 +20,20 @@ import TimeOfDeath from './app/components/timeofdeath';
 
 export default class AppNavigator extends React.Component {
   render() {
+    let StartComponent = Overview;
+    if (checkIfFirstLaunch()) {
+      StartComponent = Main;
+    }
     return (
-      <NavigatorIOS
-        initialRoute={{
-          title: 'Set Profile',
-          navigationBarHidden: true,
-          translucent: true,
-          shadowHidden: true,
-          component: Overview,
-        }}
-        style={styles.mainContainer}/>
+        <NavigatorIOS
+          initialRoute={{
+            title: 'Set Profile',
+            navigationBarHidden: true,
+            translucent: true,
+            shadowHidden: true,
+            component: Test,
+          }}
+          style={styles.mainContainer}/>
     );
   }
 }
