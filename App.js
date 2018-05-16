@@ -63,12 +63,12 @@ export default class AppNavigator extends React.Component {
       }
     }
 
-    let StartComponent = Main; //Main
+    let StartComponent = Overview; //Main
     checkIfFirstLaunch().then(function(res) {
       if (res) {
         StartComponent = Overview;
       } else {
-        StartComponent = Overview; //Overview
+        StartComponent = Main; //Overview
       }
     });
 

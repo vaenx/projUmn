@@ -1,48 +1,59 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, Slider, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, Slider, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TouchableOpacity } from 'react-native';
 import Overview from './overview';
-import FrontCamera from './frontcamera';
+import { RNCamera } from 'react-native-camera';
 
-export default class TimeOfDeath extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  handleBackToOverview() {
-    this.props.navigator.replace({
-      component: Overview,
-      navigationBarHidden: true,
-    });
-  }
+export default class FrontCamera extends React.Component {
+
   render() {
+
     return (
-      <ImageBackground source={{uri: 'bgTimeOfDeath'}} style={styles.bgImage}>
-      <FrontCamera>
-        <Text style={styles.textBodyAlt}>Works</Text>
-        <View style={styles.container}>
-          <Text style={styles.textBodyAlt1}>Your Umn time is limited</Text>
-          <View style={styles.bgContainerTODCounter}>
-            <ImageBackground source={{uri: 'concentricPulseTOD'}} style={styles.bgImageTODCounter}>
-              <View style={styles.counterContainer}>
-                <Text style={styles.textDeathCounter}>2064</Text>
-                <Text style={styles.textBodyAlt}>year of death</Text>
-              </View>
-            </ImageBackground>
-          </View>
-          <View style={styles.yearsLeftContainer}>
-            <Text style={styles.textBodyAlt2}> 57 years left to live</Text>
-          </View>
-          <TouchableHighlight
-            onPress={this.handleBackToOverview.bind(this)}>
-            <Text style={styles.buttonText}>BE UMN</Text>
-          </TouchableHighlight>
+      <View style={styles.container}>
+        <RNCamera
+          ref={ref => {
+            this.camera = ref;
+          }}
+          style = {styles.preview}
+          type={RNCamera.Constants.Type.back}
+          flashMode={RNCamera.Constants.FlashMode.off}
+          permissionDialogTitle={'Permission to use camera'}
+          permissionDialogMessage={'We need your permission to use your camera'}
+        />
+        <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center',}}>
+          <TouchableOpacity
+            onPress={this.takePicture.bind(this)}
+            style = {styles.capture}>
+            <Text style={{fontSize: 14}}> SNAP </Text>
+          </TouchableOpacity>
         </View>
-        </FrontCamera>
-      </ImageBackground>
+      </View>
     );
   }
+
+  takePicture = async function() {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await this.camera.takePictureAsync(options)
+      console.log(data.uri);
+    }
+  };
 }
 
 const styles = StyleSheet.create({
+  preview: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  capture: {
+    flex: 0,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    padding: 15,
+    paddingHorizontal: 20,
+    alignSelf: 'center',
+    margin: 20
+  },
   textTitle: {
     marginTop: "5%",
     marginHorizontal: "10%",
