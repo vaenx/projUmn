@@ -8,7 +8,7 @@ export default class FrontCamera extends React.Component {
   render() {
 
     return (
-      <View style={styles.container}>
+      <View style={styles.bgContainer}>
         <RNCamera
           ref={ref => {
             this.camera = ref;
@@ -40,6 +40,13 @@ export default class FrontCamera extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  bgContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: "100%",
+    height: "100%",
+  },
   preview: {
     flex: 1,
     justifyContent: 'flex-end',

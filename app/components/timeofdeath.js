@@ -15,9 +15,7 @@ export default class TimeOfDeath extends React.Component {
   }
   render() {
     return (
-      <ImageBackground source={{uri: 'bgTimeOfDeath'}} style={styles.bgImage}>
       <FrontCamera>
-        <Text style={styles.textBodyAlt}>Works</Text>
         <View style={styles.container}>
           <Text style={styles.textBodyAlt1}>Your Umn time is limited</Text>
           <View style={styles.bgContainerTODCounter}>
@@ -36,8 +34,7 @@ export default class TimeOfDeath extends React.Component {
             <Text style={styles.buttonText}>BE UMN</Text>
           </TouchableHighlight>
         </View>
-        </FrontCamera>
-      </ImageBackground>
+      </FrontCamera>
     );
   }
 }
