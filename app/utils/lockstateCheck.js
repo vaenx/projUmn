@@ -4,28 +4,32 @@ import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, 
 
 export default class LockStateCheck extends Component {
   state = {
-    appState: AppState.currentState
+    lockState: RNLockState.currentState,
+  }
+
+  _handleLockStateChange = (thisLockState) => {
+    if (this.state.lockState.match(/lockcomplete/) && thisLockState === 'lock') {
+      console.log('locked!')
+    } else {
+      console.log('unlocked!')
+    }
+    this.setState({lockState: nextAppState});
   }
 
   componentDidMount() {
-    AppState.addEventListener('change', this._handleAppStateChange);
+    RNLockState.addEventListener('change', this._handleLockStateChange);
   }
 
   componentWillUnmount() {
-    AppState.removeEventListener('change', this._handleAppStateChange);
-  }
-
-  _handleAppStateChange = (nextAppState) => {
-    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
-      console.log('App has come to the foreground!')
-    }
-    this.setState({appState: nextAppState});
+    RNLockState.removeEventListener('change', this._handleLockStateChange);
   }
 
   render() {
     return (
-        <Text>Current state is: {this.state.appState}</Text>
+        <Text></Text>
     );
   }
-
 }
+
+
+//app is in the background

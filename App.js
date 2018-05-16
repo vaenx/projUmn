@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, AppState } from 'react-native';
 import LockStateCheck from './app/utils/lockstateCheck';
+import AppStateCheck from './app/utils/appStateCheck';
 import { checkIfFirstLaunch } from './app/utils/checkIfFirstLaunch';
 
 import Test from './app/components/test';
@@ -19,11 +20,19 @@ import NotificationScreenNude from './app/components/notificationscreennude';
 import TimeOfDeath from './app/components/timeofdeath';
 
 export default class AppNavigator extends React.Component {
+
   render() {
-    let StartComponent = Overview;
-    if (checkIfFirstLaunch()) {
-      StartComponent = Main;
-    }
+
+    let StartComponent = Main; //Main
+    checkIfFirstLaunch().then(function(res) {
+      if (res) {
+        StartComponent = Overview;
+      } else {
+        StartComponent = Overview; //Overview
+      }
+    });
+
+
     return (
         <NavigatorIOS
           initialRoute={{
@@ -31,7 +40,7 @@ export default class AppNavigator extends React.Component {
             navigationBarHidden: true,
             translucent: true,
             shadowHidden: true,
-            component: Test,
+            component: StartComponent,
           }}
           style={styles.mainContainer}/>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground } from 'react-native';
 import OnboardingSetProfile from './onboardingsetprofile';
+import AppStateCheck from '../utils/appStateCheck';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ export default class Main extends React.Component {
   render() {
     return (
       <ImageBackground source={{uri: 'bgLightBlue'}} style={styles.bgImage}>
+        <AppStateCheck />
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set your profile{"\n"}and start using Umn!</Text>
