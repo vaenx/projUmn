@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image, DeviceEventEmitter, NativeAppEventEmitter } from 'react-native';
+import BackgroundTimer from 'react-native-background-timer';
+
 import TabApp from './tabapp';
 import TimeOfDeath from './timeofdeath';
 import LockStateCheck from '../utils/lockstateCheck';
@@ -15,12 +17,16 @@ export default class Overview extends React.Component {
     })
   }
   render() {
+
+    {BackgroundTimer.start(); {
+      console.log('background timer here');
+    }}
+
     return (
       <View style={styles.container}>
-        <LockStateCheck />
         <View style={styles.mainContainer}>
           <Text style={styles.textInfo1}>Your online path is now visible.</Text>
-          <Text style={styles.counterStyle}>00h23m</Text>
+          <Text style={styles.counterStyle}></Text>
           <Text style={styles.counterStyleSmaller}>out of 02h30m</Text>
           <Text style={styles.textInfo}>time on screen</Text>
           <Text style={styles.counterStyleUnlock}>23<Text style={styles.textBody}>/90</Text></Text>

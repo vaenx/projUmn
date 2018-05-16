@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, AppState } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image, DeviceEventEmitter, NativeAppEventEmitter } from 'react-native';
+import BackgroundTimer from 'react-native-background-timer';
 import LockStateCheck from './app/utils/lockstateCheck';
 import AppStateCheck from './app/utils/appStateCheck';
 import { checkIfFirstLaunch } from './app/utils/checkIfFirstLaunch';
@@ -21,7 +22,46 @@ import TimeOfDeath from './app/components/timeofdeath';
 
 export default class AppNavigator extends React.Component {
 
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //       timestamp: 0
+  //   };
+  //
+  //   this.setState({
+  //      timestamp: moment()
+  //  });
+  //  {
+  //    console.log(this.setState.timestamp);
+  //  }
+  // }
+
   render() {
+
+    //     // this example takes 2 seconds to run
+    // var timestamp = Date.now();
+    //
+    // console.log("starting timer...");
+    // // expected output: starting timer...
+    //
+    // setTimeout(function() {
+    //   var millis = Date.now() - timestamp;
+    //
+    //   console.log("seconds elapsed = " + Math.floor(millis/1000));
+    //   // expected output : seconds elapsed = 2
+    // });
+
+
+    const timestamp = new Date(); {
+      console.log(timestamp.toLocaleTimeString()
+      );
+    }
+
+    {
+      BackgroundTimer.start(); {
+        console.log('background timer here');
+      }
+    }
 
     let StartComponent = Main; //Main
     checkIfFirstLaunch().then(function(res) {
@@ -31,7 +71,6 @@ export default class AppNavigator extends React.Component {
         StartComponent = Overview; //Overview
       }
     });
-
 
     return (
         <NavigatorIOS
