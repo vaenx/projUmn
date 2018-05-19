@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, 
 
 export default class LockStateCheck extends Component {
   state = {
-    lockState: RNLockState.currentState,
+    lockState: /lockcomplete/,
   }
 
   _handleLockStateChange = (thisLockState) => {

@@ -6,7 +6,6 @@ import { RNCamera } from 'react-native-camera';
 export default class FrontCamera extends React.Component {
 
   render() {
-
     return (
       <View style={styles.bgContainer}>
         <RNCamera
@@ -17,15 +16,25 @@ export default class FrontCamera extends React.Component {
           type={RNCamera.Constants.Type.back}
           flashMode={RNCamera.Constants.FlashMode.off}
           permissionDialogTitle={'Permission to use camera'}
-          permissionDialogMessage={'We need your permission to use your camera'}
-        />
-        <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center',}}>
-          <TouchableOpacity
-            onPress={this.takePicture.bind(this)}
-            style = {styles.capture}>
-            <Text style={{fontSize: 14}}> SNAP </Text>
-          </TouchableOpacity>
+          permissionDialogMessage={'We need your permission to use your camera'}>
+        <View style={styles.container}>
+          <Text style={styles.textBodyAlt1}>Your Umn time is limited</Text>
+            <View style={styles.counterContainer}>
+              <Text style={styles.textDeathCounter}>2064</Text>
+              <Text style={styles.textBodyAlt}>year of death</Text>
+            </View>
+          <View style={styles.yearsLeftContainer}>
+            <Text style={styles.textBodyAlt2}> 57 years left to live</Text>
+            <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center',}}>
+              <TouchableOpacity
+                onPress={this.takePicture.bind(this)}
+                style = {styles.capture}>
+                <Text style={{fontSize: 14}}> SNAP </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+        </RNCamera>
       </View>
     );
   }
@@ -44,8 +53,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    width: "100%",
-    height: "100%",
   },
   preview: {
     flex: 1,
@@ -76,8 +83,8 @@ const styles = StyleSheet.create({
   },
   textBodyAlt1: {
     color: "white",
-    marginTop: "20%",
-    marginBottom: "26%",
+    marginTop: "10%",
+    marginBottom: "20%",
     marginHorizontal: "10%",
     fontSize: 16,
     lineHeight: 26,
@@ -127,10 +134,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#284950",
-    marginVertical: "12%",
-    marginHorizontal: "7%",
+    backgroundColor: "rgba(255, 255, 255, 0.4)",
     borderRadius: 10,
+    marginLeft: "-40%",
+    marginRight: "-40%",
+    marginTop: "15%",
+    marginBottom: "15%",
     shadowColor: '#000000',
     shadowOffset: { height: 7 },
     shadowOpacity: 0.7,
@@ -138,7 +147,6 @@ const styles = StyleSheet.create({
   },
   counterContainer: {
     alignContent: "center",
-    marginVertical: "32%",
   },
   yearsLeftContainer: {
     alignItems: "center",

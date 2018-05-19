@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image, DeviceEventEmitter, NativeAppEventEmitter } from 'react-native';
-import BackgroundTimer from 'react-native-background-timer';
 import LockStateCheck from './app/utils/lockstateCheck';
 import AppStateCheck from './app/utils/appStateCheck';
 import { checkIfFirstLaunch } from './app/utils/checkIfFirstLaunch';
@@ -19,58 +18,16 @@ import NotificationScreenBlue from './app/components/notificationscreenblue';
 import NotificationScreenRed from './app/components/notificationscreenred';
 import NotificationScreenNude from './app/components/notificationscreennude';
 import TimeOfDeath from './app/components/timeofdeath';
+import Counter from './app/utils/counter';
 
 export default class AppNavigator extends React.Component {
 
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //       timestamp: 0
-  //   };
-  //
-  //   this.setState({
-  //      timestamp: moment()
-  //  });
-  //  {
-  //    console.log(this.setState.timestamp);
-  //  }
-  // }
-
   render() {
 
-    //     // this example takes 2 seconds to run
-    // var timestamp = Date.now();
-    //
-    // console.log("starting timer...");
-    // // expected output: starting timer...
-    //
-    // setTimeout(function() {
-    //   var millis = Date.now() - timestamp;
-    //
-    //   console.log("seconds elapsed = " + Math.floor(millis/1000));
-    //   // expected output : seconds elapsed = 2
-    // });
-
-
-    const timestamp = new Date(); {
-      console.log(timestamp.toLocaleTimeString()
-      );
+    let StartComponent = Main; //Main
+    if (checkIfFirstLaunch()) {
+        StartComponent = TabApp;
     }
-
-    {
-      BackgroundTimer.start(); {
-        console.log('background timer here');
-      }
-    }
-
-    let StartComponent = Overview; //Main
-    checkIfFirstLaunch().then(function(res) {
-      if (res) {
-        StartComponent = Overview;
-      } else {
-        StartComponent = Main; //Overview
-      }
-    });
 
     return (
         <NavigatorIOS

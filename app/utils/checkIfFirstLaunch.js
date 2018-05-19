@@ -12,9 +12,9 @@ export async function checkIfFirstLaunch() {
   try {
     const hasLaunched = await AsyncStorage.getItem('hasLaunched');
     console.log('hasLaunched load', hasLaunched);
-    return hasLaunched;
+    return false;
   } catch (error) {
     console.log('hasLaunched error', error);
-    return (hasLaunched === null);
+    return true;
   }
 }

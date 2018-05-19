@@ -17,7 +17,7 @@ export default class SetProfileFormGender extends React.Component {
         <Picker
           selectedValue={this.state.gender}
           style={{ marginTop: "5%", width: "100%" }}
-          onValueChange={(itemValue, itemIndex) => this.setState({gender: itemValue})}>
+          onValueChange={this.props.handleGenderChoice(itemValue)}>
           <Picker.Item label="Female" value="Female" />
           <Picker.Item label="Male" value="Male" />
         </Picker>
