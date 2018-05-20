@@ -14,9 +14,7 @@ import Limits from './app/components/limits';
 import OnboardingSetProfile from './app/components/onboardingsetprofile';
 import OnboardingSetProfile2 from './app/components/onboardingsetprofile2';
 import OnboardingLimits from './app/components/onboardinglimits';
-import NotificationScreenBlue from './app/components/notificationscreenblue';
 import NotificationScreenRed from './app/components/notificationscreenred';
-import NotificationScreenNude from './app/components/notificationscreennude';
 import TimeOfDeath from './app/components/timeofdeath';
 import Counter from './app/utils/counter';
 
@@ -26,7 +24,7 @@ export default class AppNavigator extends React.Component {
 
     let StartComponent = Main; //Main
     if (checkIfFirstLaunch()) {
-        StartComponent = TabApp;
+        StartComponent = Test;
     }
 
     return (

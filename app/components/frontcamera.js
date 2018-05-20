@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, Slider, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, Slider, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TouchableOpacity, Modal } from 'react-native';
 import Overview from './overview';
 import { RNCamera } from 'react-native-camera';
 
 export default class FrontCamera extends React.Component {
-
   render() {
     return (
       <View style={styles.bgContainer}>

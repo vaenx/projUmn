@@ -13,11 +13,13 @@ export default class SetProfileFormGender extends React.Component {
   render() {
     return(
       <View>
-        <Text style={styles.textBody}>Select your Gender</Text>
+        <Text style={styles.textBody}>Select your Gender{this.state.gender}</Text>
         <Picker
           selectedValue={this.state.gender}
           style={{ marginTop: "5%", width: "100%" }}
-          onValueChange={this.props.handleGenderChoice(itemValue)}>
+          onValueChange={(itemValue, itemIndex) => this.setState({gender: itemValue})}
+          onValueChange={this.props.updateGender}>
+          <Picker.Item label="Scroll to pick your gender" />
           <Picker.Item label="Female" value="Female" />
           <Picker.Item label="Male" value="Male" />
         </Picker>

@@ -25,7 +25,7 @@ export default class TabApp extends React.Component {
           title="Overview"
           selected={this.state.selectedTab === 'Overview'}
           onPress={() => this.setTab('Overview')}>
-          <Overview />
+          <Overview elapsedTime={this.state.elapsed_time}/>
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: 'goalsIcon'}}

@@ -132,12 +132,19 @@ export default class Goals extends React.Component {
             </View>
             <Text style={styles.textBodySmallRight}>8h</Text>
             <View style={styles.underLine}/>
-            <ImageBackground source={{uri: 'progressGraph'}} style={styles.bgImage}>
-              <Text></Text>
-            </ImageBackground>
-            <View style={styles.underLine}/>
             <Text style={styles.textBodyRight}>total overtime
             <Text style={styles.textBodyBold}>[overtime]]</Text>{"\n"}</Text>
+
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
           </ScrollView>
         </View>
         <TabBarIOS></TabBarIOS>

@@ -15,7 +15,7 @@ export default class Main extends React.Component {
   }
   render() {
     return (
-      <ImageBackground source={{uri: 'bgLightBlue'}} style={styles.bgImage}>
+      <ImageBackground style={styles.bgImage}>
         <AppStateCheck />
         <View style={styles.container}>
           <ScrollView>
@@ -66,14 +66,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    marginVertical: "12%",
+    marginVertical: "10%",
     marginTop: "12%",
     marginHorizontal: "7%",
     borderRadius: 10,
-    shadowColor: '#355C69',
-    shadowOffset: { height: 7 },
-    shadowOpacity: 0.7,
-    shadowRadius: 24,
+    shadowColor: '#A7A7A7',
+    shadowOffset: { height: 15 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
   bgImage: {
     flex: 1,

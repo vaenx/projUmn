@@ -13,6 +13,7 @@ export default class Overview extends React.Component {
     this.state = { elapsed_time: 0, timestamp: 0 };
     this.timer = null;
     this.updateTimer = this.updateTimer.bind(this);
+    this.handleTimeOfDeath = this.handleTimeOfDeath.bind(this);
   }
 
   handleTimeOfDeath() {
@@ -34,7 +35,7 @@ export default class Overview extends React.Component {
       d = Math.floor(h / 24);
       h = h % 24;
 
-      return `${d}:${h}:${m}:${s}`;
+      return `${h ? (h > 9 ? h : "0" + h) : "00"}h ${m ? (m > 9 ? m : "0" + m): "00"}m ${s > 9 ? s : "0" + s}s `;
   }
 
   updateTimer() {
@@ -76,35 +77,34 @@ export default class Overview extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.mainContainer}>
-          <Text style={styles.textInfo1}>Your online path is now visible.</Text>
-          <Text style={styles.counterStyle}></Text>
-          <Text style={styles.counterStyleSmaller}>out of {this.formatElapsedTime()}</Text>
-          <Text style={styles.textInfo}>time on screen</Text>
-          <Text style={styles.counterStyleUnlock}>23<Text style={styles.textBody}>/90</Text></Text>
-          <Text style={styles.textInfo}>unlocks</Text>
-          <Image source={{uri: 'concentricPulseTODAlt'}} style={styles.bgImage}></Image>
-          <View style={styles.containerButton}>
+      <ImageBackground source={{uri: 'bg_simpleUmn'}} style={styles.bgImage}>
+        <View style={styles.container}>
+          <Text style={styles.textTopUmn}>UMN</Text>
             <TouchableHighlight
-              style={styles.buttonUmn}
+              style={styles.mainContainer}
               onLongPress={this.handleTimeOfDeath.bind(this)}
               underlayColor="white">
-              <Image source={{uri: 'umnTODlogoMain'}} style={styles.bgImageButton}>
-              </Image>
+              <View style={styles.counterContainer}>
+                <Text style={styles.counterStyleNumbers}>{this.formatElapsedTime()}</Text>
+                <Text style={styles.textInfo}>time on screen</Text>
+                <Text style={styles.textInfo1}>Your online path is now visible.</Text>
+              </View>
             </TouchableHighlight>
-            <Text style={styles.textNeutral}>Press for Umn</Text>
-          </View>
         </View>
-      </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  textInfo1: {
-    marginTop: "12%",
+  textTopUmn: {
     alignSelf: "center",
+    fontSize: 14,
+    marginTop: "15%",
+    letterSpacing: 5,
+  },
+  textInfo1: {
+    marginTop: "5%",
     fontSize: 14
   },
   textNeutral: {
@@ -113,58 +113,45 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#A7A7A7",
   },
-  textBody: {
-    marginTop: "12%",
-    marginHorizontal: "10%",
-    fontSize: 16,
-    lineHeight: 24,
-    textAlign: "center",
-  },
   textInfo: {
     marginTop: "3%",
-    marginHorizontal: "10%",
     marginBottom: "5%",
     fontSize: 14,
     textAlign: "center"
   },
-  textTitleH2: {
-    marginTop: "6%",
-    marginHorizontal: "10%",
-    fontSize: 18,
-    fontWeight: "800",
-  },
-  counterStyle: {
+  counterStyleNumbers: {
     textAlign: "center",
-    fontSize: 50,
-    fontWeight: "bold",
-    marginTop: "8%",
+    fontSize: 26,
+    fontWeight: "700",
   },
-  counterStyleSmaller: {
+  counterStyleLetters: {
     textAlign: "center",
     fontSize: 18,
-    marginTop: "3%",
-  },
-  counterStyleUnlock: {
-    textAlign: "center",
-    fontSize: 30,
-    fontWeight: "bold",
-    marginTop: "1%",
+    fontWeight: "700",
+    marginTop: "20%",
   },
   container: {
     flex: 1,
     marginHorizontal: "6.5%",
   },
   mainContainer: {
-    backgroundColor: 'white',
-    marginTop: "18%",
-    height: "80.5%",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-end",
+    backgroundColor: 'rgba(255,255,255,0.8)',
     width: "100%",
-    alignSelf: "center",
+    marginTop: "5%",
+    marginBottom: 100,
+    maxHeight: 667,
     borderRadius: 10,
     shadowColor: 'black',
     shadowOffset: { height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
+  },
+  counterContainer: {
+    justifyContent: "flex-end",
+    marginBottom: "2%",
   },
   containerButton: {
     marginHorizontal: "12%",
@@ -181,13 +168,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   bgImage: {
-    margin: "10%",
-    alignSelf: "center",
-    width: 250,
-    height: 253,
-    alignSelf: "center",
-    alignContent: "center",
-    marginVertical: "-5%",
+    flex: 1,
   },
   buttonUmn: {
     marginTop: "12%",
