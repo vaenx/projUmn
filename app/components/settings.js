@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, Switch } from 'react-native';
 import TabApp from './tabapp';
+import MainTimer from './maintimer';
 
 export default class Settings extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.textNeutral}>[hours] on screen today</Text>
+        <Text style={styles.textNeutral}><MainTimer/></Text>
         <View style={styles.mainContainer}>
           <ScrollView>
             <Text style={styles.textTitleH2}>Settings</Text>

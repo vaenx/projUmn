@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image, DeviceEventEmitter, NativeAppEventEmitter, AsyncStorage, Modal } from 'react-native';
 import BackgroundTimer from 'react-native-background-timer';
-import LockStateCheck from '../utils/lockstateCheck';
-
-import TabApp from './tabapp';
-import Overview from './overview';
 import FrontCamera from './frontcamera';
 
 
@@ -170,8 +166,6 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-    borderColor: "red",
-    borderWidth: 2,
   },
   counterContainer: {
     justifyContent: "flex-end",

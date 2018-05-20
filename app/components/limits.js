@@ -3,6 +3,7 @@ import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, View, TouchableHi
 import TabApp from './tabapp';
 import TimeOnScreenLimit from './timeonscreenlimit';
 import UnlocksLimit from './unlockslimit';
+import MainTimer from './maintimer';
 
 export default class Limits extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class Limits extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.textNeutral}>[hours] on screen today</Text>
+        <Text style={styles.textNeutral}><MainTimer/></Text>
         <View style={styles.mainContainer}>
           <ScrollView>
             <Text style={styles.counterStyle}>30m</Text>

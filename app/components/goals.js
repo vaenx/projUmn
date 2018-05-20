@@ -4,6 +4,7 @@ import TabApp from './tabapp';
 import GoalList from './goallist';
 import Row from './row';
 import GoalCount from './goalcount';
+import MainTimer from './maintimer';
 
 const filterItems = (filter, items) => {
   return items.filter((item) => {
@@ -91,7 +92,7 @@ export default class Goals extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.textNeutral}>[hours] on screen today</Text>
+        <Text style={styles.textNeutral}><MainTimer/></Text>
         <View style={styles.mainContainer}>
           <ScrollView>
             <GoalCount
