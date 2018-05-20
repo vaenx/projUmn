@@ -25,9 +25,9 @@ export default class AppNavigator extends React.Component {
   render() {
 
     let StartComponent = Main; //Main
-    // if (checkIfFirstLaunch()) {
-    //     StartComponent = TabApp;
-    // }
+    if (checkIfFirstLaunch()) {
+        StartComponent = TabApp;
+    }
 
     return (
         <NavigatorIOS
