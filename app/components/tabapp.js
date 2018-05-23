@@ -3,6 +3,7 @@ import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View }
 import Overview from './overview';
 import Goals from './goals';
 import Limits from './limits';
+import Test from './test';
 import Settings from './settings';
 
 export default class TabApp extends React.Component {

@@ -87,7 +87,7 @@ export default class Test extends React.Component {
             </View>
           </TouchableHighlight>
             <Modal
-              animationType="slide"
+              animationType="fade"
               transparent={false}
               visible={this.state.modalVisible}
               onRequestClose={() => {
