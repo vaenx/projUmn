@@ -19,11 +19,10 @@ export default class FrontCamera extends React.Component {
         <View style={styles.container}>
           <Text style={styles.textBodyAlt1}>Your Umn time is limited</Text>
             <View style={styles.counterContainer}>
-              <Text style={styles.textDeathCounter}>2064</Text>
-              <Text style={styles.textBodyAlt}>year of death</Text>
+              <Text style={styles.textDeathCounter}>57</Text>
+              <Text style={styles.textBodyAlt}>years left to live</Text>
             </View>
           <View style={styles.yearsLeftContainer}>
-            <Text style={styles.textBodyAlt2}> 57 years left to live</Text>
             <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center',}}>
               <TouchableOpacity
                 onPress={this.takePicture.bind(this)}
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
     marginLeft: "-40%",
     marginRight: "-40%",
     marginTop: "15%",
-    marginBottom: "15%",
+    height: 667,
     shadowColor: '#000000',
     shadowOffset: { height: 7 },
     shadowOpacity: 0.7,

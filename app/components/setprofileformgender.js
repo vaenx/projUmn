@@ -5,21 +5,25 @@ export default class SetProfileFormGender extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      gender: [],
       selectedValue: ''
     };
+
+    this.updateValue = this.updateValue.bind(this);
+  }
+
+  updateValue(gender) {
+    this.setState({ selectedValue: gender });
+    this.props.updateGender(gender);
   }
 
   render() {
     return(
       <View>
-        <Text style={styles.textBody}>Select your Gender{this.state.gender}</Text>
+        <Text style={styles.textBody}>Select your Gender</Text>
         <Picker
-          selectedValue={this.state.gender}
+          selectedValue={this.state.selectedValue}
           style={{ marginTop: "5%", width: "100%" }}
-          onValueChange={(itemValue, itemIndex) => this.setState({gender: itemValue})}
-          onValueChange={this.props.updateGender}>
-          <Picker.Item label="Scroll to pick your gender" />
+          onValueChange={this.updateValue}>
           <Picker.Item label="Female" value="Female" />
           <Picker.Item label="Male" value="Male" />
         </Picker>

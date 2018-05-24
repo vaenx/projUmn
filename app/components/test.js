@@ -5,20 +5,19 @@ import FrontCamera from './frontcamera';
 
 
 export default class Test extends React.Component {
-  state = {
-    modalVisible: false,
-  };
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
+
   constructor(props){
     super(props); {
-      this.state = { elapsed_time: 0, timestamp: 0 };
+      this.state = { elapsed_time: 0, timestamp: 0, modalVisible: false };
       this.timer = null;
       this.updateTimer = this.updateTimer.bind(this);
     }
   }
+
   formatElapsedTime() {
     var ms = this.state.elapsed_time;
 

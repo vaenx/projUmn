@@ -9,17 +9,14 @@ export default class OnboardingSetProfile extends React.Component {
     super(props);
     this.state={
       gender: [],
-      value: '',
     };
     this.handleUpdateGender = this.handleUpdateGender.bind(this);
   }
 
-  handleUpdateGender(itemValue, itemIndex) {
+  handleUpdateGender(gender) {
     this.setState({
-      value: itemValue,
-      item: itemIndex,
+      value: gender
     });
-    console.log(itemValue)
   }
 
   handleOnboardingSetProfile2() {
