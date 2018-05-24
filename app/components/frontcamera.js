@@ -12,7 +12,7 @@ export default class FrontCamera extends React.Component {
             this.camera = ref;
           }}
           style = {styles.preview}
-          type={RNCamera.Constants.Type.back}
+          type={RNCamera.Constants.Type.front}
           flashMode={RNCamera.Constants.FlashMode.off}
           permissionDialogTitle={'Permission to use camera'}
           permissionDialogMessage={'We need your permission to use your camera'}>
