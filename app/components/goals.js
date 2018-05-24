@@ -102,11 +102,8 @@ export default class Goals extends React.Component {
               filter={this.state.filter}
             />
             <Text style={styles.textBody}>achieved goals</Text>
-            <Text style={styles.textInfo}>Top time on screen: [timeonscreen]
-            {"\n"}
-            <Text style={styles.textInfo}>Top unlocks: [unlocks]</Text></Text>
             <View>
-            <Text style={styles.textInfo}>Set personal goals to make your time count and help you focus on what matters most for your life.</Text>
+            <Text style={styles.textInfo22}>Set personal goals to make your time count and help you focus on what matters most for your life.</Text>
               <GoalList
                 value={this.state.value}
                 onAddItem={this.handleAddItem}
@@ -131,11 +128,13 @@ export default class Goals extends React.Component {
                 }}
               />
             </View>
-            <Text style={styles.textBodySmallRight}>8h</Text>
-            <View style={styles.underLine}/>
-            <Text style={styles.textBodyRight}>total overtime
-            <Text style={styles.textBodyBold}>[overtime]]</Text>{"\n"}</Text>
-
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
+            <Text style={styles.textBody}> </Text>
             <Text style={styles.textBody}> </Text>
             <Text style={styles.textBody}> </Text>
             <Text style={styles.textBody}> </Text>
@@ -185,6 +184,13 @@ const styles = StyleSheet.create({
     marginHorizontal: "10%",
     fontSize: 16,
     textAlign: "right",
+  },
+  textInfo22: {
+    marginTop: "6%",
+    marginHorizontal: "10%",
+    marginBottom: "5%",
+    fontSize: 16,
+    lineHeight: 20
   },
   textBodySmallRight: {
     marginTop: "5%",
