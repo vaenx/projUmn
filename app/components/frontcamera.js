@@ -1,9 +1,42 @@
 import React, { Component } from 'react';
+import { RNCamera } from 'react-native-camera';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, Slider, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TouchableOpacity, Modal } from 'react-native';
 import Overview from './overview';
-import { RNCamera } from 'react-native-camera';
 
 export default class FrontCamera extends React.Component {
+
+  componentDidMount() {
+    this.takePicture();
+  }
+
+  takePicture = async function() {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await this.camera.takePictureAsync(options)
+    }
+
+    fetch('http://api.population.io:80/1.0/life-expectancy/remaining/female/Portugal/1988-09-21/29y7m/', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstParam: 'gender',
+        secondParam: 'newDate',
+        thirdParam: 'country',
+        fourthParam: new Date(),
+      }),
+    }); {
+      this.setState({timeLeft:})
+    };
+    console.log('timeleft', this.state.timeLeft);
+
+    // fetch API data here
+    // ...
+    // this.setState({timeLeft: ... });
+  };
+
   render() {
     return (
       <View style={styles.bgContainer}>
@@ -19,7 +52,7 @@ export default class FrontCamera extends React.Component {
         <View style={styles.container}>
           <Text style={styles.textBodyAlt1}>Your Umn time is limited</Text>
             <View style={styles.counterContainer}>
-              <Text style={styles.textDeathCounter}>57</Text>
+              <Text style={styles.textDeathCounter}>{this.state.timeLeft}</Text>
               <Text style={styles.textBodyAlt}>years left to live</Text>
             </View>
           <View style={styles.yearsLeftContainer}>
@@ -36,14 +69,6 @@ export default class FrontCamera extends React.Component {
       </View>
     );
   }
-
-  takePicture = async function() {
-    if (this.camera) {
-      const options = { quality: 0.5, base64: true };
-      const data = await this.camera.takePictureAsync(options)
-      console.log(data.uri);
-    }
-  };
 }
 
 const styles = StyleSheet.create({
@@ -137,11 +162,12 @@ const styles = StyleSheet.create({
     marginLeft: "-40%",
     marginRight: "-40%",
     marginTop: "15%",
-    height: 667,
+    height: 500,
     shadowColor: '#000000',
     shadowOffset: { height: 7 },
     shadowOpacity: 0.7,
     shadowRadius: 24,
+    alignSelf: "center",
   },
   counterContainer: {
     alignContent: "center",

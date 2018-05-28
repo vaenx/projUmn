@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image, DeviceEventEmitter, NativeAppEventEmitter, AsyncStorage, Modal } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, TabBarIOS, View, ImageBackground, TouchableHighlight, Image, DeviceEventEmitter, NativeAppEventEmitter, AsyncStorage, Modal, NetInfo } from 'react-native';
 import BackgroundTimer from 'react-native-background-timer';
 import FrontCamera from './frontcamera';
 
@@ -7,16 +7,19 @@ import FrontCamera from './frontcamera';
 export default class Test extends React.Component {
 
   setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+    if (this.state.online) { this.setState({modalVisible: visible}) } ;
   }
 
   constructor(props){
     super(props); {
-      this.state = { elapsed_time: 0, timestamp: 0, modalVisible: false };
+      this.state = { elapsed_time: 0, timestamp: 0, modalVisible: false, online: false };
       this.timer = null;
       this.updateTimer = this.updateTimer.bind(this);
+      this.handleConnectivityChange = this.handleConnectivityChange.bind(this);
     }
   }
+
+
 
   formatElapsedTime() {
     var ms = this.state.elapsed_time;
@@ -43,6 +46,15 @@ export default class Test extends React.Component {
      });
   }
 
+  handleConnectivityChange(connectionInfo) {
+    if (connectionInfo.type === 'none') {
+      this.setState({online: false});
+    }
+    else {
+      this.setState({online: true});
+    }
+  }
+
   async componentDidMount(){
     BackgroundTimer.start();
     var elapsed_time = 0;
@@ -61,6 +73,9 @@ export default class Test extends React.Component {
     });
 
     this.timer = setInterval(this.updateTimer, 1000);
+
+    NetInfo.isConnected.fetch().then(isConnected => this.setState({online: isConnected}) );
+    NetInfo.addEventListener('connectionChange', this.handleConnectivityChange);
   }
 
   async componentWillUnmount(){
@@ -68,6 +83,8 @@ export default class Test extends React.Component {
     await AsyncStorage.setItem('elapsed_time', this.state.elapsed_time.toString());
     console.log ("unmount component");
     BackgroundTimer.stop();
+
+    NetInfo.removeListener('connectionChange', this.handleConnectivityChange);
   }
 
   render() {

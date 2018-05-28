@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker, AsyncStorage } from 'react-native';
 import OnboardingGoals from './onboardinggoals';
 import OnboardingSetProfile from './onboardingsetprofile';
 import OnboardingSetProfile3 from './onboardingsetprofile3';
@@ -8,14 +8,26 @@ import SetProfileFormBday from './setprofileformbday';
 export default class OnboardingSetProfile2 extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      chosenDate: new Date()
+    };
+    this.handleUpdateDate = this.handleUpdateDate.bind(this);
   }
-  handleOnboardingSetProfile3() {
+
+  handleUpdateDate(newDate) {
+    this.setState({ chosenDate: newDate });
+    console.log(newDate);
+  }
+
+  async handleOnboardingSetProfile3() {
+    AsyncStorage.setItem('newDate', this.state.chosenDate);
     this.props.navigator.push({
       component: OnboardingSetProfile3,
       navigationBarHidden: true,
     })
   }
-  handleBackToOnboardingSetProfile() {
+  async handleBackToOnboardingSetProfile() {
+    AsyncStorage.setItem('newDate', this.state.chosenDate);
     this.props.navigator.pop({
       component: OnboardingSetProfile,
       navigationBarHidden: true,
@@ -27,7 +39,8 @@ export default class OnboardingSetProfile2 extends React.Component {
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set your profile</Text>
-            <SetProfileFormBday />
+            <SetProfileFormBday
+              updateBdDate={this.handleUpdateDate}/>
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight

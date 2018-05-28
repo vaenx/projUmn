@@ -5,16 +5,18 @@ export default class SetProfileFormBday extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chosenDate: new Date(),
-      selectedValue: ''
+      chosenDate: new Date()
     };
-    this.handleChangeBdayDate = this.handleChangeBdayDate.bind(this);
+    this.updateDate = this.updateDate.bind(this);
   }
 
-  handleChangeBdayDate(newDate) {
-    this.setState({
-      chosenDate: newDate
-    })
+  updateDate(newDate) {
+    this.setState({ chosenDate: newDate });
+    this.props.updateBdDate(newDate);
+  }
+
+  componentDidMount() {
+    this.updateDate(new Date());
   }
 
   render() {
@@ -22,9 +24,8 @@ export default class SetProfileFormBday extends React.Component {
       <View>
         <Text style={styles.textBody}>Select your Birthday Date</Text>
         <DatePickerIOS
-          selectedValue={this.state.chosenDate}
           date={this.state.chosenDate}
-          onDateChange={() => this.handleChangeBdayDate}
+          onDateChange={this.updateDate}
           mode="date"/>
       </View>
     );

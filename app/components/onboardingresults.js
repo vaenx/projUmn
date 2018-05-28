@@ -1,42 +1,45 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker } from 'react-native';
+import OnboardingSetProfile2 from './onboardingsetprofile2';
+import Main from './main';
+import SetProfileFormGender from './setprofileformgender';
 
-export default class SetProfileFormCountry extends React.Component {
+export default class OnboardingResults extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      selectedValue: ''
+      gender: [],
     };
-    this.countries = ['Portugal', 'Spain', 'Italy', 'UK', 'USA', 'Malta'];
-    this.updateCountry = this.updateCountry.bind(this);
-    this.countryList = this.countryList.bind(this);
+    this.handleUpdateGender = this.handleUpdateGender.bind(this);
+    this.handleGenderChoice = this.handleGenderChoice.bind(this);
   }
 
-  updateCountry(country) {
-    this.setState({ selectedValue: country });
-    this.props.updateCountryChoice(country);
-  }
-
-  componentDidMount() {
-    this.updateCountry('Portugal');
-  }
-
-  countryList() {
-    return this.countries.map((country_name) => {
-       return <Picker.Item key={country_name} label={country_name} value={country_name} />
+  handleUpdateGender(gender) {
+    this.setState({
+      value: gender
     });
   }
 
+  handleOnboardingSetProfile2() {
+    this.props.navigator.push({
+      component: OnboardingSetProfile2,
+      navigationBarHidden: true,
+    })
+  }
+  async handleGenderChoice() {
+    AsyncStorage.getItem('gender', this.state.gender);
+    this.props.navigator.pop({
+      component: Main,
+      navigationBarHidden: true,
+    })
+  }
+
   render() {
-    return(
+    return (
       <View>
-        <Text style={styles.textBody}>Select your Birth Country</Text>
-        <Picker
-          selectedValue={this.state.selectedValue}
-          style={{ marginTop: "5%", width: "100%" }}
-          onValueChange={this.updateCountry}>
-          { this.countryList() }
-        </Picker>
+        <Text style={styles.textBody}>oi{this.handleGenderChoice}</Text>
+        <SetProfileFormGender
+          updateGender={this.handleUpdateGender}/>
       </View>
     );
   }
@@ -93,14 +96,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    marginVertical: "12%",
+    marginVertical: "10%",
     marginTop: "12%",
     marginHorizontal: "7%",
     borderRadius: 10,
-    shadowColor: '#355C69',
-    shadowOffset: { height: 7 },
-    shadowOpacity: 0.7,
-    shadowRadius: 24,
+    shadowColor: '#A7A7A7',
+    shadowOffset: { height: 15 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
   buttonContainer: {
     flex:1,

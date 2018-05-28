@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TextInput, DatePickerIOS, Picker, AsyncStorage } from 'react-native';
 import OnboardingGoals from './onboardinggoals';
 import Main from './main';
 import OnboardingSetProfile2 from './onboardingsetprofile2';
@@ -7,7 +7,18 @@ import SetProfileFormCountry from './setprofileformcountry';
 
 export default class OnboardingSetProfile3 extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); {
+      this.state={
+        country: '',
+      };
+    this.handleUpdateCountry = this.handleUpdateCountry.bind(this);
+    }
+  }
+  handleUpdateCountry(country) {
+    this.setState({
+      value: country
+    });
+    console.log(country);
   }
   handleOnboardingGoals() {
     this.props.navigator.push({
@@ -15,7 +26,8 @@ export default class OnboardingSetProfile3 extends React.Component {
       navigationBarHidden: true,
     })
   }
-  handleBackToOnboardingSetProfile2() {
+  async handleBackToOnboardingSetProfile2() {
+    AsyncStorage.setItem('country', this.state.country);
     this.props.navigator.pop({
       component: OnboardingSetProfile2,
       navigationBarHidden: true,
@@ -27,7 +39,8 @@ export default class OnboardingSetProfile3 extends React.Component {
         <View style={styles.container}>
           <ScrollView>
             <Text style={styles.textTitle}>Set your profile</Text>
-            <SetProfileFormCountry />
+            <SetProfileFormCountry
+              updateCountryChoice={this.handleUpdateCountry}/>
           </ScrollView>
         <View style={styles.buttonContainer}>
           <TouchableHighlight

@@ -16,6 +16,10 @@ export default class SetProfileFormGender extends React.Component {
     this.props.updateGender(gender);
   }
 
+  componentDidMount() {
+    this.updateValue('Female');
+  }
+
   render() {
     return(
       <View>

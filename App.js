@@ -19,10 +19,13 @@ import NotificationScreenRed from './app/components/notificationscreenred';
 import TimeOfDeath from './app/components/timeofdeath';
 import SplashScreenUmn from './app/components/splashscreen';
 import Counter from './app/utils/counter';
+import OnboardingResults from './app/components/onboardingresults';
 
 export default class AppNavigator extends React.Component {
 
   render() {
+
+    // console.disableYellowBox = true;
 
     let StartComponent = Main; //Main
     // if (checkIfFirstLaunch()) {

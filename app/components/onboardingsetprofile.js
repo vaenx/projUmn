@@ -17,6 +17,7 @@ export default class OnboardingSetProfile extends React.Component {
     this.setState({
       value: gender
     });
+    console.log(gender);
   }
 
   handleOnboardingSetProfile2() {
