@@ -25,7 +25,7 @@ export default class AppNavigator extends React.Component {
 
   render() {
 
-    // console.disableYellowBox = true;
+    console.disableYellowBox = true;
 
     let StartComponent = Main; //Main
     // if (checkIfFirstLaunch()) {

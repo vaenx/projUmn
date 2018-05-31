@@ -6,7 +6,7 @@ const LifeApi = 'http://api.population.io:80/1.0/life-expectancy/remaining/femal
 
 export default class LifeExpectancyApi extends React.Component {
 
-  return fetch(LifeApi {
+  fetch(LifeApi {
     method: 'GET',
     headers: {
       Accept: 'application/json',

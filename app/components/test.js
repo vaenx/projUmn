@@ -6,13 +6,16 @@ import FrontCamera from './frontcamera';
 
 export default class Test extends React.Component {
 
-  setModalVisible(visible) {
-    if (this.state.online) { this.setState({modalVisible: visible}) } ;
-  }
-
   constructor(props){
     super(props); {
-      this.state = { elapsed_time: 0, timestamp: 0, modalVisible: false, online: false };
+      this.state={
+        elapsed_time: 0,
+        timestamp: 0,
+        modalVisible: false,
+        online: false,
+        timeLeft: 'Calculating...',
+      };
+
       this.timer = null;
       this.updateTimer = this.updateTimer.bind(this);
       this.handleConnectivityChange = this.handleConnectivityChange.bind(this);
@@ -20,6 +23,38 @@ export default class Test extends React.Component {
   }
 
 
+    setModalVisible(visible) {
+      if (this.state.online) {
+        this.setState({
+          modalVisible: visible
+        });
+      };
+
+      let gender = 'female'; // or 'male'
+      let country = 'Spain';
+      let ts = new Date(Date.now());
+      let date = `${ts.getFullYear()}-${ts.getMonth() + 1}-${ts.getDay()}`;
+      let age = '40y'
+      let api_base =
+      'http://api.population.io/1.0/life-expectancy/remaining';
+      let api_url =
+      `${api_base}/${gender}/${country}/${date}/${age}/`;
+
+      fetch (api_url, {
+        method: 'GET',
+        mode: 'cors',
+
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }
+      })
+      .then (response => response.json())
+      .then (data => console.log(data))
+      .catch (error => console.log(error));
+
+
+  }
 
   formatElapsedTime() {
     var ms = this.state.elapsed_time;
@@ -94,7 +129,7 @@ export default class Test extends React.Component {
           <Text style={styles.textTopUmn}>UMN</Text>
           <TouchableHighlight
             style={styles.mainContainer}
-            onLongPress={() => {this.setModalVisible(true)}}
+            onLongPress={() => { this.setModalVisible(true); } }
             underlayColor="white">
             <View style={styles.counterContainer}>
               <Text style={styles.counterStyleNumbers}>{this.formatElapsedTime()}</Text>
@@ -108,11 +143,11 @@ export default class Test extends React.Component {
               visible={this.state.modalVisible}
               onRequestClose={() => {
                 alert('Modal has been closed.')}}>
-              <FrontCamera/>
+              <FrontCamera timeLeft={this.state.timeLeft} />
               <View style={styles.buttonContainer}>
                 <TouchableHighlight
                   style={styles.buttonContinueSmall}
-                  onPress={() => {this.setModalVisible(!this.state.modalVisible)}}>
+                  onPress={() => {this.setModalVisible(false)}}>
                   <Text style={styles.textBottomUmn}>BACK TO LIFE</Text>
                 </TouchableHighlight>
               </View>
