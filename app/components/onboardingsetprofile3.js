@@ -27,7 +27,7 @@ export default class OnboardingSetProfile3 extends React.Component {
     })
   }
   async handleBackToOnboardingSetProfile2() {
-    AsyncStorage.setItem('country', this.state.country);
+    await AsyncStorage.setItem('country', this.state.country);
     this.props.navigator.pop({
       component: OnboardingSetProfile2,
       navigationBarHidden: true,

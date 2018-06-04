@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View } from 'react-native';
+import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, AsyncStorage } from 'react-native';
 import Overview from './overview';
 import Goals from './goals';
 import Limits from './limits';
@@ -10,10 +10,23 @@ export default class TabApp extends React.Component {
   constructor() {
     super();
     this.state = {selectedTab: 'Overview'}
+    this.profile = {
+      gender: 'not loaded',
+      country: 'not loaded',
+      birthdate: 'not loaded'
+     }
   }
+  
   setTab(tabId) {
     this.setState({selectedTab: tabId})
   }
+
+  async componentDidMount() {
+    this.profile.gender = await AsyncStorage.getItem('gender');
+    this.profile.country = await AsyncStorage.getItem('country');
+    this.profile.birthdate = await AsyncStorage.getItem('birthdate');
+  }
+
   render() {
     return (
       <TabBarIOS
@@ -26,7 +39,7 @@ export default class TabApp extends React.Component {
           title="Overview"
           selected={this.state.selectedTab === 'Overview'}
           onPress={() => this.setTab('Overview')}>
-          <Test elapsedTime={this.state.elapsed_time}/>
+          <Test elapsedTime={this.state.elapsed_time} profile={this.profile} />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: 'goalsIcon'}}

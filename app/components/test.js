@@ -22,37 +22,43 @@ export default class Test extends React.Component {
     }
   }
 
+  computeAge (birthdate, reference_date) {
+    console.log(birthdate);
+    let years = reference_date.getFullYear() - birthdate.getFullYear();
+    return `${years}y`
+  }
 
-    setModalVisible(visible) {
-      if (this.state.online) {
-        this.setState({
-          modalVisible: visible
-        });
-      };
+  setModalVisible(visible) {
+    if (this.state.online) {
+      this.setState({
+        modalVisible: visible
+      });
+    };
 
-      let gender = 'female'; // or 'male'
-      let country = 'Spain';
-      let ts = new Date(Date.now());
-      let date = `${ts.getFullYear()}-${ts.getMonth() + 1}-${ts.getDay()}`;
-      let age = '40y'
-      let api_base =
+    let gender = this.props.profile.gender;
+    let country = this.props.profile.country;
+    let today = new Date(Date.now());
+    let reference_date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDay()}`;
+    let age = this.computeAge(new Date(this.props.profile.birthdate), today);
+    let api_base =
       'http://api.population.io/1.0/life-expectancy/remaining';
-      let api_url =
-      `${api_base}/${gender}/${country}/${date}/${age}/`;
+    let api_url =
+      `${api_base}/${gender}/${country}/${reference_date}/${age}/`;
 
-      fetch (api_url, {
-        method: 'GET',
-        mode: 'cors',
+    console.log('fetch ' + api_url);
 
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        }
-      })
-      .then (response => response.json())
-      .then (data => console.log(data))
-      .catch (error => console.log(error));
+    fetch (api_url, {
+      method: 'GET',
+      mode: 'cors',
 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+    .then (response => response.json())
+    .then (data => console.log(data))
+    .catch (error => console.log(error));
 
   }
 
@@ -101,6 +107,7 @@ export default class Test extends React.Component {
     }
 
     console.log("mount elapsed time:", elapsed_time);
+    console.log("profile:", this.props.profile);
 
     this.setState({
       elapsed_time,

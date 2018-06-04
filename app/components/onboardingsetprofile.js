@@ -26,8 +26,9 @@ export default class OnboardingSetProfile extends React.Component {
       navigationBarHidden: true,
     })
   }
+
   async handleBackToMain() {
-    AsyncStorage.setItem('gender', this.state.gender);
+    await AsyncStorage.setItem('gender', this.state.gender);
     this.props.navigator.pop({
       component: Main,
       navigationBarHidden: true,

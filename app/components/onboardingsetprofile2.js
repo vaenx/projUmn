@@ -20,14 +20,14 @@ export default class OnboardingSetProfile2 extends React.Component {
   }
 
   async handleOnboardingSetProfile3() {
-    AsyncStorage.setItem('newDate', this.state.chosenDate);
+    await AsyncStorage.setItem('birthdate', this.state.chosenDate);
     this.props.navigator.push({
       component: OnboardingSetProfile3,
       navigationBarHidden: true,
     })
   }
   async handleBackToOnboardingSetProfile() {
-    AsyncStorage.setItem('newDate', this.state.chosenDate);
+    await AsyncStorage.setItem('birthdate', this.state.chosenDate);
     this.props.navigator.pop({
       component: OnboardingSetProfile,
       navigationBarHidden: true,
