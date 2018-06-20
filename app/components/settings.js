@@ -15,19 +15,6 @@ export default class Settings extends React.Component {
               <Text style={styles.textReminder}>Send me limit reminders</Text>
               <Switch></Switch>
             </View>
-            <Text style={styles.textInfo}>My Profile</Text>
-            <View style={styles.rowContainer}>
-              <Text style={styles.textBodyRow}>Birthday Date</Text>
-              <Text style={styles.textNeutralRow}>[Bd date]</Text>
-            </View>
-            <View style={styles.rowContainer}>
-              <Text style={styles.textBodyRow}>Gender</Text>
-              <Text style={styles.textNeutralRow}>[gender]</Text>
-            </View>
-            <View style={styles.rowContainer}>
-              <Text style={styles.textBodyRow}>Country</Text>
-              <Text style={styles.textNeutralRow}>[country]</Text>
-            </View>
             <View style={styles.underLine}/>
             <Text style={styles.textInfo}>About Umn</Text>
             <Text style={styles.textBodyAlt}>Most digital services feed on people’s attention and are therefore designed to have you spend more time there. From endless scrolling to addictive pull-down-to-refresh features, digital businesses use powerful persuasive design techniques to keep us hooked to our devices.{"\n"}
@@ -60,7 +47,6 @@ const styles = StyleSheet.create({
   },
   textBody: {
     marginTop: "2%",
-    marginHorizontal: "10%",
     fontSize: 16,
     lineHeight: 24,
   },
@@ -89,7 +75,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: 'white',
     marginTop: "5%",
-    marginBottom: 140,
+    marginBottom: 110,
     width: "100%",
     alignSelf: "center",
     borderRadius: 10,
@@ -143,7 +129,7 @@ const styles = StyleSheet.create({
   },
   textBodyRowAlt: {
     paddingTop: "1%",
-    height:30,
+    height: 30,
     fontSize: 14,
     textAlignVertical: "center",
   },

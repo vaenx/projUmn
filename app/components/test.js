@@ -13,7 +13,7 @@ export default class Test extends React.Component {
         timestamp: 0,
         modalVisible: false,
         online: false,
-        timeLeft: 'Calculating...',
+        timeLeft: '57',
       };
 
       this.timer = null;
@@ -35,11 +35,11 @@ export default class Test extends React.Component {
       });
     };
 
-    let gender = this.props.profile.gender;
-    let country = this.props.profile.country;
+    let gender = this.props.gender;
+    let country = this.props.country;
     let today = new Date(Date.now());
     let reference_date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDay()}`;
-    let age = this.computeAge(new Date(this.props.profile.birthdate), today);
+    let age = this.computeAge(new Date(this.props.birthdate), today);
     let api_base =
       'http://api.population.io/1.0/life-expectancy/remaining';
     let api_url =
@@ -142,7 +142,7 @@ export default class Test extends React.Component {
               <Text style={styles.counterStyleNumbers}>{this.formatElapsedTime()}</Text>
               <Text style={styles.textInfo}>time on screen</Text>
               <Text style={styles.textInfo1}>Your online path is now visible.</Text>
-              <Text style={styles.textNeutral}>Long press to make your time visible</Text>
+              <Text style={styles.textNeutral1}>Long press and reflect</Text>
             </View>
           </TouchableHighlight>
             <Modal
@@ -190,6 +190,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#A7A7A7",
   },
+  textNeutral1: {
+    marginTop: "3%",
+    alignSelf: "center",
+    fontSize: 12,
+    color: "#A7A7A7",
+  },
   textInfo: {
     marginTop: "3%",
     marginBottom: "5%",
@@ -218,7 +224,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.8)',
     width: "100%",
     marginTop: "5%",
-    marginBottom: 70,
+    marginBottom: 60,
     maxHeight: 667,
     borderRadius: 10,
     shadowColor: 'black',

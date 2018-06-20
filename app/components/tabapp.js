@@ -8,12 +8,9 @@ import Settings from './settings';
 export default class TabApp extends React.Component {
   constructor() {
     super();
-    this.state = {selectedTab: 'Overview'}
-    this.profile = {
-      gender: 'not loaded',
-      country: 'not loaded',
-      birthdate: 'not loaded'
-     }
+    this.state = {
+      selectedTab: 'Overview'
+    }
   }
 
   setTab(tabId) {
@@ -21,9 +18,11 @@ export default class TabApp extends React.Component {
   }
 
   async componentDidMount() {
-    this.profile.gender = await AsyncStorage.getItem('gender');
-    this.profile.country = await AsyncStorage.getItem('country');
-    this.profile.birthdate = await AsyncStorage.getItem('birthdate');
+    this.setState({
+      gender: await AsyncStorage.getItem('gender'),
+      country: await AsyncStorage.getItem('country'),
+      birthdate: await AsyncStorage.getItem('birthdate')
+    });
   }
 
   render() {
@@ -38,7 +37,10 @@ export default class TabApp extends React.Component {
           title="Overview"
           selected={this.state.selectedTab === 'Overview'}
           onPress={() => this.setTab('Overview')}>
-          <Test elapsedTime={this.state.elapsed_time} profile={this.profile} />
+          <Test elapsedTime={this.state.elapsed_time}
+            gender={this.state.gender}
+            country={this.state.country}
+            birthdate={this.state.birthdate}/>
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: 'goalsIcon'}}

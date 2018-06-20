@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: 'white',
     marginTop: "5%",
-    marginBottom: 140,
+    marginBottom: 110,
     width: "100%",
     alignSelf: "center",
     borderRadius: 10,

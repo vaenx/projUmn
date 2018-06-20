@@ -15,7 +15,7 @@ export default class Limits extends React.Component {
         <Text style={styles.textNeutral}><MainTimer/></Text>
         <View style={styles.mainContainer}>
           <ScrollView>
-            <Text style={styles.counterStyle}>15m</Text>
+            <Text style={styles.counterStyle}>0m</Text>
             <Text style={styles.textBody}>time saved this week</Text>
             <Text style={styles.textInfo}>Time saved is a weekly calculation based on your time limit set.</Text>
             <View style={styles.underLine}/>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: 'white',
     marginTop: "5%",
-    marginBottom: 140,
+    marginBottom: 110,
     width: "100%",
     alignSelf: "center",
     borderRadius: 10,

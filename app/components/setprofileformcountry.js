@@ -7,7 +7,7 @@ export default class SetProfileFormCountry extends React.Component {
     this.state={
       selectedValue: ''
     };
-    this.countries = ['Portugal', 'Spain', 'Italy', 'UK', 'USA', 'Malta'];
+    this.countries = ['Portugal', 'Spain', 'Italy', 'Germany', 'UK', 'USA', 'Australia', 'France', 'Ireland', 'Andorra', 'Luxembourg', 'Austria', 'Switzerland', 'Denmark', 'Belgium', 'Russia', 'Bulgaria', 'Croatia'];
     this.updateCountry = this.updateCountry.bind(this);
     this.countryList = this.countryList.bind(this);
   }

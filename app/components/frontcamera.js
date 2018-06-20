@@ -62,11 +62,13 @@ const styles = StyleSheet.create({
   capture: {
     flex: 0,
     backgroundColor: '#fff',
-    borderRadius: 5,
+    borderRadius: 30,
     padding: 15,
+    minWidth: 100,
     paddingHorizontal: 20,
     alignSelf: 'center',
-    margin: 20
+    alignItems: 'center',
+    marginTop: 80,
   },
   textTitle: {
     marginTop: "5%",
@@ -108,9 +110,8 @@ const styles = StyleSheet.create({
   textDeathCounter: {
     color: "white",
     alignSelf: "center",
-    fontSize: 50,
+    fontSize: 80,
     fontWeight: "800",
-    marginTop: "8%",
   },
   buttonText: {
     color: "white",
