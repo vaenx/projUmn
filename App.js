@@ -7,7 +7,6 @@ import { checkIfFirstLaunch } from './app/utils/checkIfFirstLaunch';
 import Test from './app/components/test';
 import TabApp from './app/components/tabapp';
 import Main from './app/components/main';
-import Overview from './app/components/overview';
 import OnboardingGoals from './app/components/onboardinggoals';
 import Goals from './app/components/goals';
 import Limits from './app/components/limits';

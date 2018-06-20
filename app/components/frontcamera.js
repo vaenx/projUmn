@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, Button, Slider, View, TouchableHighlight, ActivityIndicatorIOS, ImageBackground, TouchableOpacity, Modal } from 'react-native';
-import Overview from './overview';
+import Test from './test';
 import { RNCamera } from 'react-native-camera';
 
 export default class FrontCamera extends React.Component {

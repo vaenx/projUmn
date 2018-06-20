@@ -7,7 +7,7 @@ import Main from './app/components/main';
 import Goals from './app/components/goals';
 import Limits from './app/components/limits';
 import Settings from './app/components/settings';
-import Overview from './app/components/overview';
+import Test from './app/components/test';
 import OnboardingSetProfile from './app/components/onboardingsetprofile';
 import OnboardingGoals from './app/components/onboardinggoals';
 import OnboardingLimits from './app/components/onboardinglimits';

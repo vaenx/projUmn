@@ -142,6 +142,7 @@ export default class Test extends React.Component {
               <Text style={styles.counterStyleNumbers}>{this.formatElapsedTime()}</Text>
               <Text style={styles.textInfo}>time on screen</Text>
               <Text style={styles.textInfo1}>Your online path is now visible.</Text>
+              <Text style={styles.textNeutral}>Long press to make your time visible</Text>
             </View>
           </TouchableHighlight>
             <Modal
@@ -217,7 +218,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.8)',
     width: "100%",
     marginTop: "5%",
-    marginBottom: 100,
+    marginBottom: 70,
     maxHeight: 667,
     borderRadius: 10,
     shadowColor: 'black',

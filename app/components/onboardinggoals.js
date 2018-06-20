@@ -222,10 +222,12 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 25,
     backgroundColor: '#011B22',
+    marginBottom: "8%",
   },
   buttonBack: {
     width: 140,
     height: 40,
+    marginBottom: "8%",
     // backgroundColor: 'white',
   },
   buttonTextNegative: {
@@ -246,7 +248,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    marginVertical: "10%",
+    marginBottom: "8%",
     marginTop: "12%",
     marginHorizontal: "7%",
     borderRadius: 10,

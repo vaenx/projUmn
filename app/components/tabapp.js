@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, NavigatorIOS, ScrollView, TabBarIOS, View, AsyncStorage } from 'react-native';
-import Overview from './overview';
 import Goals from './goals';
 import Limits from './limits';
 import Test from './test';
@@ -16,7 +15,7 @@ export default class TabApp extends React.Component {
       birthdate: 'not loaded'
      }
   }
-  
+
   setTab(tabId) {
     this.setState({selectedTab: tabId})
   }
